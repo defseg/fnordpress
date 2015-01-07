@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  Hello <%= current_user.username %> TODO Sign out
+    Hello <%= current_user.username %>. <%= button_to "Log out", session_url, method: :delete %>
 <% else %>
-  <%= link_to new_session_url, "Log in" %> or <%= link_to new_user_url, "sign up" %>
+  <%= link_to "Log in", new_session_url %> or <%= link_to "sign up", new_user_url %>
 <% end %>
