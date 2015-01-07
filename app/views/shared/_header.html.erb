@@ -1,0 +1,5 @@
+<% if logged_in? %>
+  Hello <%= current_user.username %> TODO Sign out
+<% else %>
+  <%= link_to new_session_url, "Log in" %> or <%= link_to new_user_url, "sign up" %>
+<% end %>
