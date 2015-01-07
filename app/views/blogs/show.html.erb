@@ -1,3 +1,12 @@
-<%= @blog.path %><br>
-<%= @blog.title %><br>
-<%= @blog.tagline %>
+<div>
+  <%= @blog.path %><br>
+  <%= @blog.title %><br>
+  <%= @blog.tagline %>
+</div>
+
+<% @blog.posts.each do |post| %>
+  <h3><%= post.title %></h3>
+  <%= post.content %>
+<% end %>
+
+<%= link_to "New post", new_blog_post_url(@blog) %>

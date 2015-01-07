@@ -5,5 +5,6 @@ class Blog < ActiveRecord::Base
 
   has_many :permissions, inverse_of: :blog
   has_many :staff, through: :permissions, source: :user_id
+  has_many :posts
 
 end

@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107165615) do
+ActiveRecord::Schema.define(version: 20150107204722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "blogs", force: true do |t|
-    t.string "path",    null: false
-    t.string "title",   null: false
-    t.string "tagline"
+    t.string   "path",       null: false
+    t.string   "title",      null: false
+    t.string   "tagline"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "permissions", force: true do |t|
@@ -31,6 +33,16 @@ ActiveRecord::Schema.define(version: 20150107165615) do
 
   add_index "permissions", ["blog_id"], name: "index_permissions_on_blog_id", using: :btree
   add_index "permissions", ["user_id"], name: "index_permissions_on_user_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.integer  "blog_id",    null: false
+    t.integer  "author_id",  null: false
+    t.string   "title"
+    t.text     "content",    null: false
+    t.integer  "status",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
