@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107164725) do
+ActiveRecord::Schema.define(version: 20150107165615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20150107164725) do
     t.string "title",   null: false
     t.string "tagline"
   end
+
+  create_table "permissions", force: true do |t|
+    t.integer "user_id",                      null: false
+    t.integer "blog_id",                      null: false
+    t.integer "role"
+    t.boolean "is_moderator", default: false, null: false
+  end
+
+  add_index "permissions", ["blog_id"], name: "index_permissions_on_blog_id", using: :btree
+  add_index "permissions", ["user_id"], name: "index_permissions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   attr_reader :password
 
+  validates :username, length: {maximum: 30}
+  validates :email, length: {maximum: 255}
+
+  has_many :permissions
+  has_many :blogs, through: :permissions
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)

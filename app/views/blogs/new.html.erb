@@ -1,0 +1,17 @@
+<form action="<%= blogs_url %>" method="post">
+  <%= auth_token %>
+
+  <label>Path
+    <input type="text" name="blog[path]">
+  </label>
+
+  <label>Title
+    <input type="text" name="blog[title]">
+  </label>
+
+  <label>Tagline
+    <input type="text" name="blog[tagline]">
+  </label>
+
+  <input type="submit" value="Submit">
+</form>
