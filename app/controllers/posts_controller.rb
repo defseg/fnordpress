@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_permissions!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @post = Post.new(blog_id: params[:blog_id])
@@ -21,6 +22,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :status, :blog_id)
+  end
+
+  def require_permissions!
+    blog = Blog.find(params[:blog_id])
+    return if blog.staff.include?(current_user)
+    flash[:errors] = ["You aren't authorized to do that!"]
+    redirect_to blog_url(blog)
   end
 
 end
