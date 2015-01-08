@@ -1,0 +1,9 @@
+<%= simple_format(comment.content) %><br>
+<%= link_to "Reply", blog_post_comment_url(id: comment.id, post_id: comment.post_id) %>
+<ul>
+  <% comments[comment.id].each do |child_comment| %>
+    <li>
+      <%= render "comments/comment", comment: child_comment, comments: comments %>
+    </li>
+  <% end %>
+</ul>

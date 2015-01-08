@@ -16,4 +16,14 @@ class Post < ActiveRecord::Base
     Comment.where(post_id: id).count()
   end
 
+  def comments_by_parent
+    comments_by_parent = Hash.new { |h, k| h[k] = [] }
+
+    self.comments.includes(:author).each do |comment|
+      comments_by_parent[comment.parent_comment_id] << comment
+    end
+
+    comments_by_parent
+  end
+
 end

@@ -1,0 +1,10 @@
+<%= @comment.content %>
+
+
+<form action="<%= blog_post_comments_url(post_id: @comment.post_id) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+  <textarea name="comment[content]" rows="16" cols="80"></textarea><br>
+  <input type="submit" value="Reply">
+</form>

@@ -1,23 +1,24 @@
-class PostsController < ApplicationController
+class Api::PostsController < Api::ApiController
   before_action :require_permissions!, only: [:new, :create, :edit, :update, :destroy]
 
-  def new
-    @post = Post.new(blog_id: params[:blog_id])
-    render :new
-  end
+  # def new
+  #   @post = Post.new(blog_id: params[:blog_id])
+  #   render :new
+  # end
 
   def create
     # TODO implement status
-    @post = current_user.posts.new(post_params)
-    @post.status = 0
-    if @post.save
-      redirect_to blog_url(@post.blog)
+    post = current_user.posts.new(post_params)
+    post.status = 0
+    post.published_at = Time.now
+    if post.save
+      render json: post
     else
-      flash.now[:errors] = @post.errors.full_messages
-      render :new
+      render json: post.errors.full_messages, status: :unprocessable_entity
     end
   end
 
+  # TODO: may have to have another template for fetching unpublished posts
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments_by_parent

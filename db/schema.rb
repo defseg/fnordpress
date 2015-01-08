@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108154311) do
+ActiveRecord::Schema.define(version: 20150108222655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,14 @@ ActiveRecord::Schema.define(version: 20150108154311) do
   add_index "permissions", ["user_id"], name: "index_permissions_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "blog_id",    null: false
-    t.integer  "author_id",  null: false
+    t.integer  "blog_id",      null: false
+    t.integer  "author_id",    null: false
     t.string   "title"
-    t.text     "content",    null: false
-    t.integer  "status",     null: false
+    t.text     "content",      null: false
+    t.integer  "status",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "published_at"
   end
 
   create_table "users", force: true do |t|

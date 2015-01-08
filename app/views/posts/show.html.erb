@@ -5,11 +5,9 @@
 
 <h4>Comments:</h4>
 
-<% @post.comments.each do |comment| %>
-  <p>
-    <%= simple_format(comment.content) %><br>
-  </p>
-<% end %>
+  <% @comments[nil].each do |comment| %>
+    <%= render "comments/comment", comment: comment, comments: @comments %>
+  <% end %>
 
 <form action="<%= blog_post_comments_url(post_id: @post.id) %>" method="post">
   <%= auth_token %>
