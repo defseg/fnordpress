@@ -25,6 +25,12 @@ class Api::PostsController < Api::ApiController
     render :show
   end
 
+  # TODO: write a jbuilder to format the posts
+  def index
+    blog = Blog.find(params[:blog_id])
+    render json: blog.posts
+  end
+
   private
 
   def post_params

@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api do
-    resources :blogs
-    resources :posts
+    resources :blogs do
+      resources :posts, only: [:index]
+    end
+    resources :posts, except: [:index]
     resources :comments
   end
 
