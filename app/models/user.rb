@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   validates :username, length: {maximum: 30}
-  validates :email, length: {maximum: 255}
+  validates :email, presence: true, length: {maximum: 255}
 
   has_many :permissions
   has_many :blogs, through: :permissions

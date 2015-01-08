@@ -10,9 +10,20 @@ class Permission < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :blog, presence: true
-  # TODO: should also validate that owners/admins are always moderators
+  validates :is_moderator, presence: true
+  before_save :owners_and_admins_are_always_moderators
 
   belongs_to :blog
   belongs_to :user
+
+  private
+
+  # before save,
+
+  def owners_and_admins_are_always_moderators
+    if ["owner", "administrator"].include?(role)
+      is_moderator = true
+    end
+  end
 
 end
