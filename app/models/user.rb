@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :permissions
   has_many :blogs, through: :permissions
   has_many :posts, foreign_key: :author_id
+  has_many :comments, foreign_key: :author_id
 
   after_initialize :ensure_session_token
 

@@ -18,6 +18,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    puts @post.content
+    render :show
+  end
+
   private
 
   def post_params

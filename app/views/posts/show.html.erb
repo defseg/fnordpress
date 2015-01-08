@@ -1,0 +1,19 @@
+<%= link_to "Back to blog", blog_url(@post.blog) %>
+
+<h2><%= @post.title %></h2>
+<%= @post.content %>
+
+<h4>Comments:</h4>
+
+<% @post.comments.each do |comment| %>
+  <p>
+    <%= simple_format(comment.content) %><br>
+  </p>
+<% end %>
+
+<form action="<%= blog_post_comments_url(post_id: @post.id) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+  <textarea name="comment[content]" rows="16" cols="80"></textarea><br>
+  <input type="submit" value="Reply">
+</form>

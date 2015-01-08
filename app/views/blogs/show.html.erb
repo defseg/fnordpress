@@ -1,12 +1,13 @@
 <div>
-  <%= @blog.path %><br>
-  <%= @blog.title %><br>
-  <%= @blog.tagline %>
+  <h1><%= @blog.title %></h1>
+  at <%= @blog.path %><br>
+  <em>"<%= @blog.tagline %>"</em>
 </div>
 
 <% @blog.posts.each do |post| %>
-  <h3><%= post.title %></h3>
-  <%= post.content %>
+  <h3><%= link_to post.title, blog_post_url(blog_id: @blog.id, id: post.id) %>
+  (<%= post.comment_count %> comments)</h3>
+  <%= simple_format(post.content) %>
 <% end %>
 
 <%= link_to "New post", new_blog_post_url(@blog) %>
