@@ -16,8 +16,8 @@ class Api::BlogsController < Api::ApiController
   end
 
   def show
-    blog = Blog.find(params[:id])
-    render json: blog
+    @blog = Blog.find(params[:id])
+    render :show
   end
 
   def index

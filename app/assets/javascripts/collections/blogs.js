@@ -5,7 +5,7 @@ WordpressClone.Collections.Blogs = Backbone.Collection.extend({
 
   // TODO: DRY?
   getOrFetch: function (id) {
-    var blog = this.get(blog);
+    var blog = this.get(id);
     var blogs = this;
     if (!blog) {
       blog = new WordpressClone.Models.Blog({id: id});

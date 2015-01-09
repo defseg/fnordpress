@@ -1,3 +1,4 @@
+json.id @user.id
 json.username @user.username
 json.blogs @user.blogs do |blog|
   json.title blog.title

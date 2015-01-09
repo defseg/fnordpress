@@ -1,0 +1,8 @@
+<h1><%= user.escape('username') %>'s blogs:</h1>
+<ul>
+  <% user.blogs().each(function (blog) { %>
+    <li>
+      <a href="<%= '#/blogs/' + blog.escape('id') %>"><%= blog.escape('title') %></a>
+    </li>
+  <% }) %>
+</ul>

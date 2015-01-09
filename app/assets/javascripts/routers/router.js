@@ -4,14 +4,17 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'userMain',
+    'users/:id': 'userShow',
     'blogs': 'blogsIndex',
-    'blogs/:id': 'blogShow'
+    'blogs/:id': 'blogShow',
+    'blogs/:blogId/posts/:id': 'postShow'
   },
 
-  // TODO: figure out how to call blogs_by_user from here
-  userMain: function () {
-    
+  userShow: function (id) {
+    var model = new WordpressClone.Models.User({id: id});
+    model.fetch();
+    var view = new WordpressClone.Views.UserShow({model: model});
+    this._swapView(view);
   },
 
   blogShow: function (id) {
