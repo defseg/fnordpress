@@ -7,9 +7,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    # TODO implement status
     @post = current_user.posts.new(post_params)
     @post.status = 0
+    @post.published_at = Time.now
     if @post.save
       redirect_to blog_url(@post.blog)
     else

@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
   has_many :comments
 
   validates :author_id, :blog_id, :content, :status, presence: true
+  # TODO add custom validation/before-action: all published posts must have a published at
 
   def comment_count
     Comment.where(post_id: id).count()

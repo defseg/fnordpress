@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :blogs do
       resources :posts, only: [:index]
     end
+    resources :users, only: [:show]
     resources :posts, except: [:index]
     resources :comments
   end

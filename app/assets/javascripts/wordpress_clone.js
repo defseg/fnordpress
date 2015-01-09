@@ -4,7 +4,6 @@ window.WordpressClone = {
   Views: {},
   Routers: {},
   initialize: function() {
-    // alert('Hello from Backbone!');
     new WordpressClone.Routers.Router
     WordpressClone.Collections.blogs = new WordpressClone.Collections.Blogs();
     WordpressClone.Collections.blogs.fetch();

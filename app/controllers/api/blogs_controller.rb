@@ -1,11 +1,6 @@
 class Api::BlogsController < Api::ApiController
   before_action :require_permissions!, only: [:edit, :update]
 
-  def index_by_user
-    user = User.find(params[:user_id])
-    render json: user.blogs
-  end
-
   def create
     blog = Blog.new(blog_params)
     permission = blog.permissions.new(

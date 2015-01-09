@@ -1,0 +1,5 @@
+<% blogs.each(function (blog) { %>
+  <a href='<%= "#blogs/" + blog.escape('id') %>'>
+    <%= blog.escape('title') %>
+  </a>
+<% }) %>
