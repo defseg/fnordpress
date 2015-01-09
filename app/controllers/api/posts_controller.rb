@@ -21,7 +21,7 @@ class Api::PostsController < Api::ApiController
   # TODO: may have to have another template for fetching unpublished posts
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments_by_parent
+    @comments = @post.comments
     render :show
   end
 
