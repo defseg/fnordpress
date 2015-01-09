@@ -1,0 +1,8 @@
+<h2><%= post.escape('title') %></h2>
+<%= post.get('content') %>
+<% console.log(post) %>
+<br>
+Comments:
+<% post.comments().each (function (comment) { %>
+  <%= comment.get('content') %>
+<% }) %>
