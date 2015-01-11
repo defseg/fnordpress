@@ -7,7 +7,6 @@ class Api::PostsController < Api::ApiController
   # end
 
   def create
-    # TODO implement status
     post = current_user.posts.new(post_params)
     post.status = 0
     post.published_at = Time.now
@@ -38,7 +37,7 @@ class Api::PostsController < Api::ApiController
   end
 
   def require_permissions!
-    blog = Blog.find(params[:blog_id])
+    blog = Blog.find(post_params[:blog_id])
     return if blog.staff.include?(current_user)
     flash[:errors] = ["You aren't authorized to do that!"]
     redirect_to blog_url(blog)

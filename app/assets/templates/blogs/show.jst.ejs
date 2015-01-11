@@ -5,3 +5,17 @@
   <h2><a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a></h2>
   <%= post.get('content') %>
 <% }) %>
+
+New Post:
+<form id="new-post">
+  <input type="hidden" name="post[blog_id]" value="<%= blog.escape('id') %>">
+  <label>Title
+    <input type="text" name="post[title]">
+  </label><br>
+
+  <label>Content<br>
+    <textarea name="post[content]" rows="16" cols="80"></textarea>
+  </label>
+
+  <input type="submit" value="Post">
+</form>

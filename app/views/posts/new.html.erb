@@ -1,7 +1,7 @@
 <form action="<%= blog_posts_url %>" method="post">
   <%= auth_token %>
 
-  <input type="hidden" name="post[blog_id]" value="<%= @post.blog_id %>">
+  <input type="hidden" name="post[blog_id]" value="<%= @post.blog_id %>>
 
   <label>Title
     <input type="text" name="post[title]">
