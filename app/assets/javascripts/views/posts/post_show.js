@@ -15,8 +15,8 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
       if (!commentsByParent.hasOwnProperty(comment.escape('parent_comment_id'))) {
         commentsByParent[comment.escape('parent_comment_id')] = []
       }
-      var commentDiv = "<div class='" + comment.get('id') + "'>" + comment.get('content') + "</div>"
-      commentsByParent[comment.escape('parent_comment_id')].push(commentDiv)
+      var commentHTML = $('<ul />').addClass(comment.escape('id')).html(comment.get('content'));
+      commentsByParent[comment.escape('parent_comment_id')].push(commentHTML)
     })
 
     if (commentsByParent[""]) {
@@ -27,7 +27,7 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
     }
 
     Object.keys(commentsByParent).forEach(function (commentKey) {
-      postShow.$('div.' + commentKey).append(commentsByParent[commentKey])
+      postShow.$('ul.' + commentKey).append(commentsByParent[commentKey])
     });
 
     return this;

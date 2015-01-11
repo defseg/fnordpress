@@ -1,5 +1,7 @@
 json.content simple_format(@post.content)
 json.(@post, :id, :blog_id, :author_id, :title, :published_at)
+json.blog_title @post.blog.title
+json.blog_tagline @post.blog.tagline
 json.comments @comments do |comment|
   json.id comment.id
   json.parent_comment_id comment.parent_comment_id
