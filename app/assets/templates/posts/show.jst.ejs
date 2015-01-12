@@ -1,7 +1,16 @@
 <a href="#/blogs/<%= post.escape('blog_id') %>"><h1><%= post.escape('blog_title') %></h1></a>
 <em><%= post.escape('blog_tagline') %></em>
+
 <h2><%= post.escape('title') %></h2>
 <%= post.get('content') %>
-<% console.log(post) %>
 <br>
 Comments:
+
+<form class="new-comment">
+  <input type="hidden" name="comment[post_id]" value="<%= post.escape('id') %>">
+  <label>Leave a comment<br>
+    <textarea name="comment[content]" rows="16" cols="80"></textarea>
+  </label>
+
+  <input type="submit" value="Post">
+</form>

@@ -19,8 +19,6 @@ WordpressClone.Views.BlogShow = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
-    // TODO: is there a better way to do this?
-    formData["post"]["blog_id"] = +(formData["post"]["blog_id"])
     console.log(formData);
     var newPost = new WordpressClone.Models.Post;
 
