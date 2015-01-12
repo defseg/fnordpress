@@ -16,6 +16,6 @@
 /tmp
 
 # Ignore secrets.
-/config/secrets.yml
+# /config/secrets.yml
 /config/initializers/secret_token.rb
 
