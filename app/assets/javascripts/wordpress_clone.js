@@ -11,7 +11,3 @@ window.WordpressClone = {
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  WordpressClone.initialize();
-});
