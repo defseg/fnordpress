@@ -1,10 +1,13 @@
-* New blog form
 * Add HTML structure to templates
 * Header
 * Backbone auth?
 * Notifications
-* WARN: tilt autoloading 'ejs' in a non thread-safe way; explicit require 'ejs' suggested.
-* fix "( comments)" display bug that occurs when you make a new post
-* figure out how to get simple_format on the client side so display before and after reload isn't different
-  or pull back the post from server on success...? no
+* "WARN: tilt autoloading 'ejs' in a non thread-safe way; explicit require 'ejs' suggested."
 * enforce simple_formatting serverside in the render? (will I need to?)
+* tighten up serverside security in general
+* userpage
+
+DONE:
+* new blog form
+* fix "( comments)" display bug that occurs when you make a new post
+* fix display before/after thing

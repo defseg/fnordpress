@@ -37,12 +37,12 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
       replyButton.addClass('comment-reply-button');
       commentHTML.append(replyButton.clone());
 
-      commentsByParent[comment.escape('parent_comment_id')].push(commentHTML)
+      commentsByParent[comment.escape('parent_comment_id')].push(commentHTML);
     })
 
     if (commentsByParent[""]) {
       commentsByParent[""].forEach ( function (topLevelComment) {
-        postShow.$el.append(topLevelComment);
+        postShow.$('section.comments').append(topLevelComment);
       })
       delete commentsByParent[""]
     }
@@ -71,7 +71,7 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
     // comments in <p> tags when it sends them up. so when you post a comment,
     // it shows up as an inline element, but things sent up from the server are
     // block elements.
-    formData["comment"]["content"] = "<p>" + formData["comment"]["content"] + "</p>"
+    // formData["comment"]["content"] = "<p>" + formData["comment"]["content"] + "</p>"
 
     var newComment = new WordpressClone.Models.Comment;
     var that = this;
