@@ -1,7 +1,9 @@
-<h1><%= blog.escape('title') %></h1>
-<em><%= blog.escape('tagline') %></em>
+<section class="blog-header">
+  <h1><%= blog.escape('title') %></h1>
+  <em><%= blog.escape('tagline') %></em>
+</section>
 <% blog.posts().each (function (post) { %>
-  <a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a> (<%= post.escape('commentCount') %> comments)
+  <h2 class="blog-post-title"><a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a></h2> (<%= post.escape('commentCount') %> comments)
   <%= post.get('content') %>
 <% }) %>
 

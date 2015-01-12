@@ -1,17 +1,13 @@
 class Api::PostsController < Api::ApiController
   before_action :require_permissions!, only: [:new, :create, :edit, :update, :destroy]
-  include ActionView::Helpers::TextHelper
 
-  # def new
-  #   @post = Post.new(blog_id: params[:blog_id])
-  #   render :new
-  # end
+  # to get simple_format in the controller
+  include ActionView::Helpers::TextHelper
 
   def create
     post = current_user.posts.new(post_params)
     post.status = 0
     post.published_at = Time.now
-    puts post.content
     post.content = simple_format(post.content)
     if post.save
       render json: post

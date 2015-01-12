@@ -17,3 +17,7 @@
 .invis {
   display: none;
 }
+
+.blog-post-title {
+  display: inline-block;
+}
