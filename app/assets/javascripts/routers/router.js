@@ -4,9 +4,10 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   // TODO: make these URLs look more Wordpress-like
+  // TODO: the root route shouldn't be blogsIndex, but instead your following feed
   routes: {
+    '': 'blogsIndex',
     'users/:id': 'userShow',
-    'blogs': 'blogsIndex',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow'
   },
