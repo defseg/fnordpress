@@ -1,6 +1,5 @@
 <h1><%= blog.escape('title') %></h1>
 <em><%= blog.escape('tagline') %></em>
-<% console.log(blog) %>
 <% blog.posts().each (function (post) { %>
   <a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a> (<%= post.escape('commentCount') %> comments)
   <%= post.get('content') %>

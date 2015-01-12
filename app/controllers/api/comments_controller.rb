@@ -1,7 +1,11 @@
 class Api::CommentsController < Api::ApiController
 
+  # to get simple_format in the controller
+  include ActionView::Helpers::TextHelper
+
   def create
     @comment = current_user.comments.new(comment_params)
+    @comment.content = simple_format(@comment.content)
 
     if @comment.save
       render json: @comment

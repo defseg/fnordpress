@@ -19,13 +19,13 @@ WordpressClone.Views.BlogShow = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
-    console.log(formData);
     var newPost = new WordpressClone.Models.Post;
 
     var that = this;
     newPost.save(formData, {
       success: function () {
         that.model.posts().add(newPost);
+        newPost.set("commentCount", 0);
         that.render();
       }
     })

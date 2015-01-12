@@ -7,6 +7,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   // TODO: the root route shouldn't be blogsIndex, but instead your following feed
   routes: {
     '': 'blogsIndex',
+    'blogs/new': 'blogNew',
     'users/:id': 'userShow',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow'
@@ -22,6 +23,11 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   // ====== BLOGS ======
+
+  blogNew: function () {
+    var view = new WordpressClone.Views.BlogNew();
+    this._swapView(view);
+  },
 
   blogShow: function (id) {
     var model = WordpressClone.Collections.blogs.getOrFetch(id);
