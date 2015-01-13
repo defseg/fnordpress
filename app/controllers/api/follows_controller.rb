@@ -3,10 +3,11 @@ class Api::FollowsController < Api::ApiController
   def index
     @blogs = current_user.followed_blogs
 
-    posts = []
-    @blogs.each { |blog| posts.concat(blog.posts) }
+    @posts = []
+    @blogs.each { |blog| @posts.concat(blog.posts) }
 
-    render json: posts
+    @posts.sort_by!(&:published_at).reverse!
+    render :index
   end
 
   # TODO: add blog/:blog_id/follows controller
