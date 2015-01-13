@@ -7,7 +7,9 @@ WordpressClone.Views.BlogShow = Backbone.View.extend({
   },
 
   events: {
-    'submit #new-post': 'submit'
+    'submit #new-post': 'submit',
+    'click .prev-page': 'prevPage',
+    'click .next-page': 'nextPage'
   },
 
   render: function () {
@@ -29,5 +31,25 @@ WordpressClone.Views.BlogShow = Backbone.View.extend({
         that.render();
       }
     })
-  }
+  },
+
+  prevPage: function (event) {
+    event.preventDefault();
+    console.log(this.model._page);
+    this.model.fetch({
+      data: {
+        page: (this.model._page || 1) - 1
+      }
+    })
+  },
+
+  nextPage: function (event) {
+    event.preventDefault();
+    console.log(this.model._page);
+    this.model.fetch({
+      data: {
+        page: (this.model._page || 1) + 1
+      }
+    })
+  },
 });

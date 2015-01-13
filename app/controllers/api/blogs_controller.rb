@@ -18,6 +18,7 @@ class Api::BlogsController < Api::ApiController
 
   def show
     @blog = Blog.find(params[:id])
+    @page = params[:page] || 1
     render :show
   end
 

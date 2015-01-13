@@ -49,6 +49,7 @@ group :test do
 end
 
 gem 'newrelic_rpm'
+gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'

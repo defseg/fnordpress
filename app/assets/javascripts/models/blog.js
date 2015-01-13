@@ -8,6 +8,12 @@ WordpressClone.Models.Blog = Backbone.Model.extend({
       delete response.posts;
     }
 
+    if (response._page) {
+      this._page = +response._page;
+      console.log(this._page);
+      delete response._page;
+    }
+
     return response;
   },
 
