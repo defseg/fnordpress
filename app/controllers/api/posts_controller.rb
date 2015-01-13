@@ -38,8 +38,7 @@ class Api::PostsController < Api::ApiController
   def require_permissions!
     blog = Blog.find(post_params[:blog_id])
     return if blog.staff.include?(current_user)
-    flash[:errors] = ["You aren't authorized to do that!"]
-    redirect_to blog_url(blog)
+    render json: "You aren't allowed to do that!" # TODO: status?
   end
 
 end

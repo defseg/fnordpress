@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:index]
     end
     resources :users, only: [:show]
+    resources :follows, only: [:index, :create, :destroy]
     resources :posts, except: [:index]
     resources :comments
   end

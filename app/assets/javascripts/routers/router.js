@@ -6,11 +6,22 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   // TODO: make these URLs look more Wordpress-like
   // TODO: the root route shouldn't be blogsIndex, but instead your following feed
   routes: {
-    '': 'blogsIndex',
+    '': 'mainPage',
+    'me': 'blogsIndex',
     'blogs/new': 'blogNew',
     'users/:id': 'userShow',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow'
+  },
+
+  // ====== MAIN  ======
+
+  mainPage: function () {
+    var collection = new WordpressClone.Collections.Posts;
+    collection.url = "/api/follows";
+    collection.fetch();
+    var view = new WordpressClone.Views.PostFeed({collection: collection});
+    this._swapView(view);
   },
 
   // ====== USERS ======
