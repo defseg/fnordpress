@@ -1,12 +1,12 @@
 class Api::FollowsController < Api::ApiController
 
   def index
-    @blogs = current_user.followed_blogs
+    @posts = Post.joins("INNER JOIN blogs ON posts.blog_id = blogs.id")
+                 .joins("INNER JOIN follows ON blogs.id = follows.blog_id")
+                 .joins("INNER JOIN users ON follows.user_id = users.id")
+                 .where(users: {id: current_user.id})
+                 .order(published_at: :desc)
 
-    @posts = []
-    @blogs.each { |blog| @posts.concat(blog.posts) }
-
-    @posts.sort_by!(&:published_at).reverse!
     render :index
   end
 

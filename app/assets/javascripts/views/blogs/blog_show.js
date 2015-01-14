@@ -9,12 +9,13 @@ WordpressClone.Views.BlogShow = Backbone.View.extend({
   events: {
     'submit #new-post': 'submit',
     'click .prev-page': 'prevPage',
-    'click .next-page': 'nextPage'
+    'click .next-page': 'nextPage',
   },
-
+  
   render: function () {
     var content = this.template({blog: this.model});
     this.$el.html(content);
+
     return this;
   },
 
