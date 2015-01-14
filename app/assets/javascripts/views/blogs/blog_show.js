@@ -30,7 +30,7 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
   },
 
   renderPosts: function () {
-    console.log('sfgdfsggdfsgdfsgdfs')
+    console.log('rendering posts');
     var that = this;
     this.collection.each(function (post) {
       var postView = new WordpressClone.Views.PostFeedShow({model: post});
@@ -57,11 +57,12 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
     if (event) event.preventDefault();
     console.log(this.model._page);
     this.collection.fetch({
-      // TODO reappend scrollListener
       data: {
         page: (this.model._page || 1) + 1
       }, success: function () {
         this.model._page++;
+        console.log('succeeded');
+        this.$el.append('<div id="scrollListener"></div>');
       }.bind(this)
     });
   },
@@ -72,7 +73,7 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
     var distanceFromBottom = $(document).height() - $(window).height() - $(document).scrollTop();
 
     if (distanceFromBottom < 100) {
-      // $('#scrollListener').detach();
+      $('#scrollListener').detach();
       this.nextPage();
     }
   }
