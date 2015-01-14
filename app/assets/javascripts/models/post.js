@@ -17,4 +17,4 @@ WordpressClone.Models.Post = Backbone.Model.extend({
 
     return this._comments;
   }
-})
+});

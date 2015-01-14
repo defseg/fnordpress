@@ -17,4 +17,4 @@ WordpressClone.Models.User = Backbone.Model.extend({
 
     return this._blogs;
   }
-})
+});

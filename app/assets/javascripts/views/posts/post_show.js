@@ -38,17 +38,17 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
       commentHTML.append(replyButton.clone());
 
       commentsByParent[comment.escape('parent_comment_id')].push(commentHTML);
-    })
+    });
 
     if (commentsByParent[""]) {
       commentsByParent[""].forEach ( function (topLevelComment) {
         postShow.$('section.comments').append(topLevelComment);
-      })
-      delete commentsByParent[""]
+      });
+      delete commentsByParent[""];
     }
 
     Object.keys(commentsByParent).forEach(function (commentKey) {
-      postShow.$('ul.' + commentKey).append(commentsByParent[commentKey])
+      postShow.$('ul.' + commentKey).append(commentsByParent[commentKey]);
     });
 
     return this;
@@ -73,13 +73,13 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
     // block elements.
     // formData["comment"]["content"] = "<p>" + formData["comment"]["content"] + "</p>"
 
-    var newComment = new WordpressClone.Models.Comment;
+    var newComment = new WordpressClone.Models.Comment();
     var that = this;
     newComment.save(formData, {
       success: function () {
         that.model.comments().add(newComment);
         that.render();
       }
-    })
+    });
   }
-})
+});

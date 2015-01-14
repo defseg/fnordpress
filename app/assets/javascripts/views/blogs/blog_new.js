@@ -15,7 +15,7 @@ WordpressClone.Views.BlogNew = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
-    var newBlog = new WordpressClone.Models.Blog;
+    var newBlog = new WordpressClone.Models.Blog();
 
     var that = this;
     newBlog.save(formData, {
@@ -25,6 +25,6 @@ WordpressClone.Views.BlogNew = Backbone.View.extend({
         WordpressClone.Collections.blogs.add(newBlog);
         Backbone.history.navigate("#/blogs/" + newBlog.escape('id'));
       }
-    })
+    });
   }
-})
+});
