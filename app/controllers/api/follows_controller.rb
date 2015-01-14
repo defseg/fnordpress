@@ -6,6 +6,8 @@ class Api::FollowsController < Api::ApiController
                  .joins("INNER JOIN users ON follows.user_id = users.id")
                  .where(users: {id: current_user.id})
                  .order(published_at: :desc)
+                 .includes(:comments)
+                 .page(1)
 
     render :index
   end
