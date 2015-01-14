@@ -5,6 +5,10 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.render);
   },
 
+  events: {
+    'windowScroll #scrollListener': 'scroll'
+  },
+
   render: function () {
     var content = this.template({feed: this.collection});
     this.$el.html(content);
@@ -18,5 +22,9 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
     });
 
     return this;
+  },
+
+  scroll: function () {
+    console.log('scrolled');
   }
 });
