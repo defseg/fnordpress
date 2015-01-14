@@ -9,6 +9,7 @@ class Api::FollowsController < Api::ApiController
                  .includes(:comments)
                  .page(1)
 
+    @page = params[:page] || 1
     render :index
   end
 

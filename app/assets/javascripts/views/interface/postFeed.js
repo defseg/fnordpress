@@ -2,7 +2,7 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
   template: JST['interface/feed'],
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.renderPosts);
   },
 
   events: {
@@ -12,19 +12,29 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({feed: this.collection});
     this.$el.html(content);
+    this.renderPosts();
+    return this;
+  },
 
-    var feedDiv = this.$('#feed');
+  renderPosts: function () {
     var that = this;
-
     this.collection.each ( function (post) {
       var postView = new WordpressClone.Views.PostFeedShow({model: post});
       that.addSubview('#feed', postView);
     });
-
-    return this;
   },
 
-  scroll: function () {
-    console.log('scrolled');
+  nextPage: function () {
+    console.log('sdfsfd');
+    this.collection.fetch({
+      data: {
+        page: (this.collection._page || 1) + 1
+      }, success: function () {
+        this.collection._page++;
+        this.render();
+        this.$el.append('<div id="scrollListener"></div>');
+      }.bind(this)
+    });
   }
+
 });

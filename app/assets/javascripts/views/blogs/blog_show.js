@@ -55,26 +55,14 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
 
   nextPage: function (event) {
     if (event) event.preventDefault();
-    console.log(this.model._page);
     this.collection.fetch({
       data: {
         page: (this.model._page || 1) + 1
       }, success: function () {
         this.model._page++;
-        console.log('succeeded');
         this.$el.append('<div id="scrollListener"></div>');
       }.bind(this)
     });
   },
 
-  scroll: function (event) {
-    // this will get complicated if there's ever a footer
-    // may want to cache it later
-    var distanceFromBottom = $(document).height() - $(window).height() - $(document).scrollTop();
-
-    if (distanceFromBottom < 100) {
-      $('#scrollListener').detach();
-      this.nextPage();
-    }
-  }
 });

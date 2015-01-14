@@ -10,3 +10,5 @@ json.array! @posts do |post|
   json.published_at post.published_at
   json.commentCount post.comment_count
 end
+
+json._page @page.to_i

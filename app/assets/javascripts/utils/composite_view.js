@@ -48,5 +48,19 @@ Backbone.CompositeView = Backbone.View.extend({
       this._subviews[selector] = this._subviews[selector] || [];
       return this._subviews[selector];
     }
+  },
+
+  // scroll handler methods
+  // leaving nextPage on the view for now, but could be dried. TODO?
+
+  scroll: function (event) {
+    // this will get complicated if there's ever a footer
+    // may want to cache it later
+    var distanceFromBottom = $(document).height() - $(window).height() - $(document).scrollTop();
+
+    if (distanceFromBottom < 100) {
+      $('#scrollListener').detach();
+      this.nextPage();
+    }
   }
 });
