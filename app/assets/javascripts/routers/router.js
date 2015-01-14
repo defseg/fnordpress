@@ -17,9 +17,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   // ====== MAIN  ======
 
   mainPage: function () {
-    var collection = new WordpressClone.Collections.Posts;
+    var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/follows";
-    collection.fetch();
     var view = new WordpressClone.Views.PostFeed({collection: collection});
     this._swapView(view);
   },
@@ -41,12 +40,19 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   blogShow: function (id) {
+    // TODO remove WordpressClone.Collections.blogs
     var model = WordpressClone.Collections.blogs.getOrFetch(id);
-    var view = new WordpressClone.Views.BlogShow({model: model});
+    var collection = new WordpressClone.Collections.Posts();
+    collection.url = "/api/blogs/" + model.get('id') + "/posts";
+    var view = new WordpressClone.Views.BlogShow({model: model, collection: collection});
+    collection.fetch({
+      data: {page: 1}
+    });
     this._swapView(view);
   },
 
   blogsIndex: function (id) {
+    // TODO remove WordpressClone.Collections.blogs
     var view = new WordpressClone.Views.BlogsIndex({collection: WordpressClone.Collections.blogs});
     this._swapView(view);
   },

@@ -1,14 +1,3 @@
-<a class="prev-page">Prev</a> <a class="next-page">Next</a>
-
-<section class="blog-header">
-  <h1><%= blog.escape('title') %></h1>
-  <em><%= blog.escape('tagline') %></em>
-</section>
-<% blog.posts().each (function (post) { %>
-  <h2 class="blog-post-title"><a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a></h2> (<%= post.escape('commentCount') %> comments)
-  <%= post.get('content') %>
-<% }) %>
-
 New Post:
 <form id="new-post">
   <input type="hidden" name="post[blog_id]" value="<%= blog.escape('id') %>">
@@ -23,4 +12,12 @@ New Post:
   <input type="submit" value="Post">
 </form>
 
+<section class="blog-header">
+  <h1><%= blog.escape('title') %></h1>
+  <em><%= blog.escape('tagline') %></em>
+</section>
+
+<div id="posts"></div>
+
 <!-- TODO: make the post render into a subview so I can reuse it in the feed -->
+<div id="scrollListener"></div>
