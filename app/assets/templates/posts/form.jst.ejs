@@ -8,13 +8,7 @@
     <textarea name="post[content]" rows="16" cols="80"><%= blog.escape('content') %></textarea>
   </label>
 
-  <label>Status
-    <select name="post[status]">
-      <option value="0">Published</option>
-      <option value="1">Draft</option>
-      <option value="2">Pending Review</option>
-    </select>
-  </label>
+  <div class="status-dropdown"></div>
 
   <input type="submit" value="Post">
 </form>

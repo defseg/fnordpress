@@ -1,4 +1,4 @@
-WordpressClone.Views.PostEdit = Backbone.View.extend({
+WordpressClone.Views.PostEdit = Backbone.CompositeView.extend({
 
   template: JST['posts/form'],
 

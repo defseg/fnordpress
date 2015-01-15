@@ -1,4 +1,4 @@
-WordpressClone.Views.PostNew = Backbone.View.extend({
+WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
 
   template: JST['posts/form'],
 
@@ -10,6 +10,9 @@ WordpressClone.Views.PostNew = Backbone.View.extend({
     var content = this.template({post: new WordpressClone.Models.Post(),
                                  blog: this.model});
     this.$el.html(content);
+    var dropdown = new WordpressClone.Views.PostStatusDropdown();
+    this.addSubview('.status-dropdown', dropdown);
+
     return this;
   },
 
