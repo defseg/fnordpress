@@ -24,14 +24,14 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
     });
   },
 
-  nextPage: function () {
-    console.log('sdfsfd');
+  nextPage: function (event) {
+    if (event) event.preventDefault();
+    console.log(this.collection._page);
     this.collection.fetch({
       data: {
         page: (this.collection._page || 1) + 1
       }, success: function () {
         this.collection._page++;
-        this.render();
         this.$el.append('<div id="scrollListener"></div>');
       }.bind(this)
     });

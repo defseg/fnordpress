@@ -1,15 +1,16 @@
 class Api::FollowsController < Api::ApiController
 
   def index
+    @page = params[:page] || 1
+
     @posts = Post.joins("INNER JOIN blogs ON posts.blog_id = blogs.id")
                  .joins("INNER JOIN follows ON blogs.id = follows.blog_id")
                  .joins("INNER JOIN users ON follows.user_id = users.id")
                  .where(users: {id: current_user.id})
                  .order(published_at: :desc)
                  .includes(:comments)
-                 .page(1)
+                 .page(@page)
 
-    @page = params[:page] || 1
     render :index
   end
 

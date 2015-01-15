@@ -11,4 +11,4 @@ json.array! @posts do |post|
   json.commentCount post.comment_count
 end
 
-json._page @page.to_i
+# json._page @page.to_i
