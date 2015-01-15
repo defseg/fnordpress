@@ -14,3 +14,41 @@ DONE:
 * new blog form
 * fix "( comments)" display bug that occurs when you make a new post
 * fix display before/after thing
+
+
+=====
+
+NOT DONE:
+      api_blog_follows POST   /api/blogs/:blog_id/follows(.:format)                      api/follows#create
+       api_blog_follow DELETE /api/blogs/:blog_id/follows/:id(.:format)                  api/follows#destroy
+             api_blogs GET    /api/blogs(.:format)                                       api/blogs#index
+         edit_api_blog GET    /api/blogs/:id/edit(.:format)                              api/blogs#edit
+                       PATCH  /api/blogs/:id(.:format)                                   api/blogs#update
+                       PUT    /api/blogs/:id(.:format)                                   api/blogs#update
+                       DELETE /api/blogs/:id(.:format)                                   api/blogs#destroy
+              api_user GET    /api/users/:id(.:format)                                   api/users#show
+         edit_api_post GET    /api/posts/:id/edit(.:format)                              api/posts#edit
+              api_post GET    /api/posts/:id(.:format)                                   api/posts#show
+                       PATCH  /api/posts/:id(.:format)                                   api/posts#update
+                       PUT    /api/posts/:id(.:format)                                   api/posts#update
+                       DELETE /api/posts/:id(.:format)                                   api/posts#destroy
+      edit_api_comment GET    /api/comments/:id/edit(.:format)                           api/comments#edit
+           api_comment GET    /api/comments/:id(.:format)                                api/comments#show
+                       PATCH  /api/comments/:id(.:format)                                api/comments#update
+                       PUT    /api/comments/:id(.:format)                                api/comments#update
+                       DELETE /api/comments/:id(.:format)                                api/comments#destroy
+
+DONE:
+                  root GET    /                                                          static_pages#root
+        api_blog_posts GET    /api/blogs/:blog_id/posts(.:format)                        api/posts#index
+                       POST   /api/blogs(.:format)                                       api/blogs#create
+          new_api_blog GET    /api/blogs/new(.:format)                                   api/blogs#new
+              api_blog GET    /api/blogs/:id(.:format)                                   api/blogs#show
+           api_follows GET    /api/follows(.:format)                                     api/follows#index
+                       POST   /api/follows(.:format)                                     api/follows#create
+            api_follow DELETE /api/follows/:id(.:format)                                 api/follows#destroy
+             api_posts POST   /api/posts(.:format)                                       api/posts#create
+          new_api_post GET    /api/posts/new(.:format)                                   api/posts#new
+          api_comments GET    /api/comments(.:format)                                    api/comments#index
+                       POST   /api/comments(.:format)                                    api/comments#create
+       new_api_comment GET    /api/comments/new(.:format)                                api/comments#new

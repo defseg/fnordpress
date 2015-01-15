@@ -14,10 +14,25 @@ class Api::FollowsController < Api::ApiController
     render :index
   end
 
+  def create
+    @blog = Blog.find(params[:blog_id])
+    @follow = @blog.follows.new(user_id: current_user.id)
+    if @follow.save
+      render json: @follow
+    else
+      render json: @follow.errors.full_messages
+    end
+  end
+
+  def destroy
+
+  end
+
   # TODO: add blog/:blog_id/follows controller
 
   def create
-    follow = current_user.follows.new(params[:blog_id])
+    puts params[:blog_id]
+    follow = current_user.follows.new(blog_id: params[:blog_id])
 
     if follow.save
       render json: follow

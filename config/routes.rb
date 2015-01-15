@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :blogs do
       resources :posts, only: [:index]
+      resource :follow, only: [:create, :destroy]
     end
     resources :users, only: [:show]
     resources :follows, only: [:index, :create, :destroy]
