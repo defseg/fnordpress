@@ -11,6 +11,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     'blogs/new': 'blogNew',
     'users/:id': 'userShow',
     'blogs/:id': 'blogShow',
+    'blogs/:blogId/posts/:postId': 'postNew',
     'posts/:id': 'postShow'
   },
 
@@ -61,6 +62,12 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   // ====== POSTS ======
+
+  postNew: function (blogId, postId) {
+    var model = WordpressClone.Collections.blogs.getOrFetch(blogId);
+    var view = new WordpressClone.Views.PostNew({model: model});
+    this._swapView(view);
+  },
 
   postShow: function (id) {
     var model = new WordpressClone.Models.Post({id: id});

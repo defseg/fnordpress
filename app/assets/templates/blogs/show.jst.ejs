@@ -1,16 +1,4 @@
-New Post:
-<form id="new-post">
-  <input type="hidden" name="post[blog_id]" value="<%= blog.escape('id') %>">
-  <label>Title
-    <input type="text" name="post[title]">
-  </label><br>
-
-  <label>Content<br>
-    <textarea name="post[content]" rows="16" cols="80"></textarea>
-  </label>
-
-  <input type="submit" value="Post">
-</form>
+<a href='<%="#/blogs/" + blog.escape('id') + "/posts/new" %>'>New Post</a>
 
 <section class="blog-header">
   <h1><%= blog.escape('title') %></h1>
