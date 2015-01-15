@@ -7,6 +7,7 @@ class Api::FollowsController < Api::ApiController
                  .joins("INNER JOIN follows ON blogs.id = follows.blog_id")
                  .joins("INNER JOIN users ON follows.user_id = users.id")
                  .where(users: {id: current_user.id})
+                 .where("published_at <= :time_now", time_now: Time.now)
                  .order(published_at: :desc)
                  .includes(:comments)
                  .page(@page)
