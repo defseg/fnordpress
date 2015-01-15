@@ -15,13 +15,13 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
     var postShow = this;
     this.$el.html(content);
 
-    var commentsByParent = {}
+    var commentsByParent = {};
 
     // grab comment form only once
     var commentForm = $('.new-comment').clone();
     this.model.comments().each (function (comment) {
       if (!commentsByParent.hasOwnProperty(comment.escape('parent_comment_id'))) {
-        commentsByParent[comment.escape('parent_comment_id')] = []
+        commentsByParent[comment.escape('parent_comment_id')] = [];
       }
       var commentHTML = $('<ul />').addClass(comment.escape('id')).html(comment.get('content'));
 

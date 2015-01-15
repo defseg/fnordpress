@@ -26,7 +26,8 @@ class Api::PostsController < Api::ApiController
   # TODO: write a jbuilder to format the posts
   def index
     blog = Blog.find(params[:blog_id])
-    render json: blog.posts.page(params[:page]).order("published_at DESC")
+    @posts = blog.posts.includes(:comments).page(params[:page]).order("published_at DESC")
+    render :index
   end
 
   private
