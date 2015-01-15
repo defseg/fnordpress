@@ -19,8 +19,6 @@ DONE:
 =====
 
 NOT DONE:
-      api_blog_follows POST   /api/blogs/:blog_id/follows(.:format)                      api/follows#create
-       api_blog_follow DELETE /api/blogs/:blog_id/follows/:id(.:format)                  api/follows#destroy
              api_blogs GET    /api/blogs(.:format)                                       api/blogs#index
          edit_api_blog GET    /api/blogs/:id/edit(.:format)                              api/blogs#edit
                        PATCH  /api/blogs/:id(.:format)                                   api/blogs#update
@@ -40,6 +38,8 @@ NOT DONE:
 
 DONE:
                   root GET    /                                                          static_pages#root
+      api_blog_follows POST   /api/blogs/:blog_id/follows(.:format)                      api/follows#create
+       api_blog_follow DELETE /api/blogs/:blog_id/follows/:id(.:format)                  api/follows#destroy
         api_blog_posts GET    /api/blogs/:blog_id/posts(.:format)                        api/posts#index
                        POST   /api/blogs(.:format)                                       api/blogs#create
           new_api_blog GET    /api/blogs/new(.:format)                                   api/blogs#new

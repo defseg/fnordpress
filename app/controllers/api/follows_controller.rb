@@ -25,7 +25,13 @@ class Api::FollowsController < Api::ApiController
   end
 
   def destroy
+    follow = Follow.find_by(blog_id: params[:blog_id], user_id: current_user.id)
 
+    if follow.delete
+      render json: {}
+    else
+      render json: "error"
+    end
   end
 
   # TODO: add blog/:blog_id/follows controller
