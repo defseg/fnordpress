@@ -8,5 +8,15 @@
     <textarea name="post[content]" rows="16" cols="80"></textarea>
   </label>
 
+  <label>Published
+    <input type="radio" name="post[status]" value="0">
+  </label>
+  <label>Draft
+    <input type="radio" name="post[status]" value="1">
+  </label>
+  <label>Pending Review
+    <input type="radio" name="post[status]" value="2">
+  </label>
+
   <input type="submit" value="Post">
 </form>

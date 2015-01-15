@@ -6,8 +6,7 @@ class Api::PostsController < Api::ApiController
 
   def create
     post = current_user.posts.new(post_params)
-    post.status = 0
-    post.published_at = Time.now
+    post.published_at = (post.status == 0) ? Time.now : nil
     post.content = simple_format(post.content)
     if post.save
       render json: post
@@ -26,14 +25,20 @@ class Api::PostsController < Api::ApiController
   # TODO: write a jbuilder to format the posts
   def index
     blog = Blog.find(params[:blog_id])
-    @posts = blog.posts.includes(:comments).page(params[:page]).order("published_at DESC")
+    @posts = blog.posts
+                 .where("published_at <= :time_now", time_now: Time.now)
+                 .includes(:comments)
+                 .page(params[:page])
+                 .order("published_at DESC")
     render :index
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :status, :blog_id)
+    post_params = params.require(:post).permit(:title, :content, :status, :blog_id)
+    post_params[:status] = post_params[:status].to_i
+    post_params
   end
 
   def require_permissions!

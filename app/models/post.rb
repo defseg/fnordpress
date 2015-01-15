@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   private
 
   def enforce_published_at
-    self.published_at = Time.now if !(self.published_at)
+    self.published_at = Time.now if !(self.published_at) && self.status == 0
   end
 
 end
