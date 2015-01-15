@@ -1,6 +1,6 @@
 WordpressClone.Views.PostNew = Backbone.View.extend({
 
-  template: JST['posts/new'],
+  template: JST['posts/form'],
 
   events: {
     'submit .post-form': 'submit'

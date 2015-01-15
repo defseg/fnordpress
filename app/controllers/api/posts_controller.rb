@@ -6,7 +6,7 @@ class Api::PostsController < Api::ApiController
 
   def create
     post = current_user.posts.new(post_params)
-    post.published_at = (post.status == 0) ? Time.now : nil
+    post.published_at = (post.status == "published") ? Time.now : nil
     post.content = simple_format(post.content)
     if post.save
       render json: post

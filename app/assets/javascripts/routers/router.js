@@ -12,7 +12,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     'users/:id': 'userShow',
     'blogs/:id': 'blogShow',
     'blogs/:blogId/posts/:postId': 'postNew',
-    'posts/:id': 'postShow'
+    'posts/:id': 'postShow',
+    'posts/:id/edit': 'postEdit'
   },
 
   // ====== MAIN  ======
@@ -74,6 +75,18 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     model.fetch();
     var view = new WordpressClone.Views.PostShow({model: model});
     this._swapView(view);
+  },
+
+  postEdit: function (id) {
+    // render in the success callback to make sure the post content is there
+    var model = new WordpressClone.Models.Post({id: id});
+    var that = this;
+    model.fetch({
+      success: function () {
+        var view = new WordpressClone.Views.PostEdit({model: model});
+        that._swapView(view);
+      }
+    });
   },
 
   // ====== PRIVATE ======
