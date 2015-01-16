@@ -8,7 +8,7 @@ WordpressClone.Views.PostStatusDropdown = Backbone.View.extend({
 
   initialize: function () {
     // TODO make this use the status of the post
-    this._selected = false;
+    this._scheduled = false;
   },
 
   render: function () {
@@ -19,14 +19,13 @@ WordpressClone.Views.PostStatusDropdown = Backbone.View.extend({
   },
 
   handleSelect: function (event) {
-    // var select = $(event.currentTarget);
-    // if (select.val() == "Scheduled") {
-    //   if (!this._selected) {
-    //
-    //   }
-    // } else {
-    //   this._selected = false;
-    // }
+    if (this.$('select option:selected').text() == "Scheduled") {
+      this.$('.datetime').removeClass('invis');
+      this.$('.datetime').prop('name', 'post[published_at]');
+    } else {
+      this.$('.datetime').addClass('invis');
+      this.$('.datetime').prop('name', "''");
+    }
     console.log($('select option:selected').text());
   }
 
