@@ -9,8 +9,10 @@ WordpressClone.Views.FollowButton = Backbone.View.extend({
     'click': 'handleClick'
   },
 
+  tagName: 'li',
+
   render: function () {
-    var button = $('<button />');
+    var button = $('<button />').addClass('follow-button');
 
     if (this.followState === "followed") {
       button.prop("disabled", false);

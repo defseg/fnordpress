@@ -2,7 +2,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#main');
     this.$headerEl = $('header#page-header');
-    this.headerView = new WordpressClone.Views.Header();
+    this.headerView = new WordpressClone.Views.Header({el: '#page-header'});
   },
 
   // TODO: make these URLs look more Wordpress-like
@@ -52,12 +52,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   blogShow: function (id) {
     // TODO remove WordpressClone.Collections.blogs
     var model = WordpressClone.Collections.blogs.getOrFetch(id);
-    var that = this;
-    model.fetch({
-      success: function () {
-        that.headerView.trigger("blogView", model);
-      }
-    });
+    // this.headerView.trigger("blogView", model);
     var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/blogs/" + model.get('id') + "/posts";
     var view = new WordpressClone.Views.BlogShow({model: model, collection: collection});

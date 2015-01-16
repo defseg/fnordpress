@@ -24,6 +24,7 @@ WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
   },
 
   submit: function (event) {
+    alert(this._blogId)
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
     var newPost = new WordpressClone.Models.Post();
@@ -32,7 +33,7 @@ WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
     newPost.save(formData, {
       success: function () {
         that.model.posts().add(newPost);
-        Backbone.history.navigate('#/blogs/' + this._blogId + '/posts/' + newPost.escape('id'));
+        Backbone.history.navigate('#/blogs/' + that._blogId + '/posts/' + newPost.escape('id'));
       }
     });
   }

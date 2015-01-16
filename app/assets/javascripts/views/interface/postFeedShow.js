@@ -4,7 +4,7 @@ WordpressClone.Views.PostFeedShow = Backbone.View.extend({
 
   initialize: function (params) {
     this.listenTo(this.model, 'sync', this.render);
-    this.blog = WordpressClone.Collections.blogs.getOrFetch(this.model.get('blog_id'));
+    this.blog = WordpressClone.Collections.blogs.get(this.model.get('blog_id'));
   },
 
   render: function () {

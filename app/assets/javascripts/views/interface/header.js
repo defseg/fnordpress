@@ -1,4 +1,4 @@
-WordpressClone.Views.Header = Backbone.View.extend({
+WordpressClone.Views.Header = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.on("blogView", this.blogView);
@@ -6,14 +6,16 @@ WordpressClone.Views.Header = Backbone.View.extend({
   },
 
   blogView: function (model) {
-    console.log('blog view')
-    console.log(this.$('.blog-header'))
     $('.blog-header').removeClass('invis');
     $('.blog-header-li').html('<a>' + model.escape('title') + '</a>')
+    var followButton = new WordpressClone.Views.FollowButton({model: model});
+    this.addSubview('.blog-header', followButton);
+    this._currentSubview = followButton;
   },
 
   blogUnview: function () {
-    console.log('blog unview')
+    this.stopListening();
     $('.blog-header').addClass('invis');
+    this.removeSubview('.blog-header', this._currentSubview);
   }
 });

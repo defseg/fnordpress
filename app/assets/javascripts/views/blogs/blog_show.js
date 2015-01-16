@@ -23,8 +23,7 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({blog: this.model});
     this.$el.html(content);
-    var followButton = new WordpressClone.Views.FollowButton({model: this.model});
-    this.addSubview('.followButton', followButton);
+    this.renderPosts();
     // TODO: don't want to spend time on this now but might be faster to cache height
     // if this goes back in, will need a resize listener to force recalculation
     // this._height = $(document).height() - $(window).height();

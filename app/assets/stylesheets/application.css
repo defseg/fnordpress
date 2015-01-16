@@ -15,7 +15,7 @@
  */
 
 html, body, header, footer, section, article, div, strong, img, p, h1, h2,
-h3, time, ul, li, small, form, label, input, textarea, button, a {
+h3, time, header ul, header li, small, form, label, input, textarea, button, a {
   margin: 0;
   padding: 0;
   border: 0;
@@ -65,8 +65,8 @@ header li {
   border-right: 1px solid #999;
 }
 
-header a, header input, header .pseudo-anchor {
-  padding: 5px 20px;
+header a, header input, header .pseudo-anchor, header button {
+  padding: 6px 20px;
   display: block;
   position: relative;
 }
