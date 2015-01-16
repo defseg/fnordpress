@@ -85,12 +85,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
 
   postShow: function (blogId, postId) {
     var model = new WordpressClone.Models.Post({id: postId});
-    var that = this;
-    WordpressClone.Collections.blogs.fetch(blogId, {
-      success: function () {
-        that.headerView.trigger("blogView", model);
-      }
-    });
+    this.headerView.trigger("blogView", WordpressClone.Collections.blogs.getOrFetch(blogId))
+    console.log('FUCK FUCK FUCK')
     var view = new WordpressClone.Views.PostShow({model: model});
     this._swapView(view);
   },
