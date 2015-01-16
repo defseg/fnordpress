@@ -2,6 +2,10 @@ WordpressClone.Views.PostEdit = Backbone.CompositeView.extend({
 
   template: JST['posts/form'],
 
+  events: {
+    'submit .post-form': 'submit'
+  },
+
   render: function () {
     var content = this.template({post: this.model});
     this.$el.html(content);
@@ -15,7 +19,7 @@ WordpressClone.Views.PostEdit = Backbone.CompositeView.extend({
     var that = this;
     this.model.save(formData, {
       success: function () {
-        Backbone.history.navigate('#/posts/' + this.model.escape('id'))
+        Backbone.history.navigate('#/posts/' + that.model.escape('id'))
       }
     });
   }

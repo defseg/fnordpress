@@ -33,10 +33,19 @@ class Api::PostsController < Api::ApiController
     render :index
   end
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      render json: @post
+    else
+      render json: @post.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def post_params
-    post_params = params.require(:post).permit(:title, :content, :status, :blog_id)
+    post_params = params.require(:post).permit(:title, :content, :status, :blog_id, :published_at)
     post_params[:status] = post_params[:status].to_i
     post_params
   end

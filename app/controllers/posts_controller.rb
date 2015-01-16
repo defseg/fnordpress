@@ -24,10 +24,14 @@ class PostsController < ApplicationController
     render :show
   end
 
+  def update
+
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :status, :blog_id)
+    params.require(:post).permit(:title, :content, :status, :published_at, :blog_id)
   end
 
   def require_permissions!

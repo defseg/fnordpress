@@ -1,12 +1,15 @@
 <header>
-  <div class="user-login">
+  <ul class="user-login">
     <% if logged_in? %>
-      Hello <%= current_user.username %>. <%= button_to "Log out", session_url, method: :delete %>
+      <li>Hello <%= current_user.username %>.</li>
+      <li><%= button_to "Log out", session_url, method: :delete %></li>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#my_blogs">My Blogs</a></li>
     <% else %>
-      <%= link_to "Log in", new_session_url %> or <%= link_to "sign up", new_user_url %>
+      <li><%= link_to "Log in", new_session_url %> or <%= link_to "sign up", new_user_url %></li>
     <% end %>
-  </div>
-  <a href="#">Dashboard</a>
+    </li>
+  </ul>
 </header>
 
 <!-- TODO backbone auth -->
