@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, body, header, footer, section, article, div, strong, img, p, h1, h2,
+html, body, header, footer, section, article, div, strong, img, h1, h2,
 h3, time, header ul, header li, small, form, label, input, textarea, button, a {
   margin: 0;
   padding: 0;
@@ -27,6 +27,10 @@ h3, time, header ul, header li, small, form, label, input, textarea, button, a {
   vertical-align: inherit;
   color: inherit;
   background: transparent;
+}
+
+h1, h2, h3 {
+  display: block;
 }
 
 ul, li {
@@ -44,6 +48,10 @@ body, html {
   background: #ccc;
   height: 100%;
   font-size: 16px;
+}
+
+div, p {
+  word-wrap: break-word;
 }
 
 /* --- HEADER --- */
@@ -124,7 +132,7 @@ header .user-header-links {
   width: 75%;
   min-height: calc(100% - 30px);
   background: #fff;
-  padding: 5px;
+  padding: 15px 50px;
 }
 
 #main a {
