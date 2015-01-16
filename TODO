@@ -1,5 +1,6 @@
-* follow button
-* discover blogs
+* blog edit (use the inline trick)
+* blog + post + comment delete ( + user?)
+* comment edit (inline trick again)
 
 * Add HTML structure to templates
 * Header
