@@ -3,7 +3,6 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
   template: JST['blogs/show'],
 
   initialize: function (params) {
-    console.log(params)
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.renderPosts);
   },
@@ -34,8 +33,9 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
 
   renderPosts: function () {
     var that = this;
+    var blog_id = this.model.get('id')
     this.collection.each(function (post) {
-      var postView = new WordpressClone.Views.PostFeedShow({model: post, blog: that.model});
+      var postView = new WordpressClone.Views.PostFeedShow({model: post, blog_id: that.model.get('id')});
       that.addSubview('#posts', postView);
     });
   },

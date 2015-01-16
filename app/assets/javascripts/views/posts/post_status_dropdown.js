@@ -26,7 +26,6 @@ WordpressClone.Views.PostStatusDropdown = Backbone.View.extend({
       this.$('.datetime').addClass('invis');
       this.$('.datetime').prop('name', "''");
     }
-    console.log($('select option:selected').text());
   }
 
 });

@@ -22,7 +22,6 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
       var postView = new WordpressClone.Views.PostFeedShow({model: post});
       that.addSubview('#feed', postView);
     });
-    console.log(this.collection.length)
     if (this.collection.length == 0) {
       this.$('.no-follows').removeClass('invis');
     } else {
@@ -32,7 +31,6 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
 
   nextPage: function (event) {
     if (event) event.preventDefault();
-    console.log(this.collection._page);
     this.collection.fetch({
       data: {
         page: (this.collection._page || 1) + 1

@@ -43,6 +43,7 @@ body, html {
   font-family: sans-serif;
   background: #ccc;
   height: 100%;
+  font-size: 16px;
 }
 
 /* --- HEADER --- */
@@ -124,10 +125,27 @@ header .user-header-links {
   padding: 5px;
 }
 
+#main a {
+  text-decoration: underline;
+}
+
 .invis {
   display: none;
 }
 
 .blog-post-title {
   display: inline-block;
+}
+
+/*.blog-list li {
+  margin-bottom: 3px;
+}*/
+
+.blog-list a {
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
 }

@@ -6,4 +6,5 @@ json.array! @posts do |post|
   json.content post.content
   json.published_at post.published_at
   json.commentCount post.comment_count
+  json.blog_id post.blog_id
 end

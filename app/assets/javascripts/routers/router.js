@@ -2,6 +2,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#main');
     this.$headerEl = $('header#page-header');
+    this.headerView = new WordpressClone.Views.Header();
   },
 
   // TODO: make these URLs look more Wordpress-like
@@ -27,6 +28,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     });
     var view = new WordpressClone.Views.PostFeed({collection: collection});
     this._swapView(view);
+    this.headerView.trigger("blogUnview");
   },
 
   // ====== USERS ======
@@ -36,6 +38,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     model.fetch();
     var view = new WordpressClone.Views.UserShow({model: model});
     this._swapView(view);
+    this.headerView.trigger("blogUnview");
   },
 
   // ====== BLOGS ======
@@ -43,11 +46,18 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   blogNew: function () {
     var view = new WordpressClone.Views.BlogNew();
     this._swapView(view);
+    this.headerView.trigger("blogUnview");
   },
 
   blogShow: function (id) {
     // TODO remove WordpressClone.Collections.blogs
     var model = WordpressClone.Collections.blogs.getOrFetch(id);
+    var that = this;
+    model.fetch({
+      success: function () {
+        that.headerView.trigger("blogView", model);
+      }
+    });
     var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/blogs/" + model.get('id') + "/posts";
     var view = new WordpressClone.Views.BlogShow({model: model, collection: collection});
@@ -61,6 +71,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     // TODO remove WordpressClone.Collections.blogs
     var view = new WordpressClone.Views.BlogsIndex({collection: WordpressClone.Collections.blogs});
     this._swapView(view);
+    this.headerView.trigger("blogUnview");
   },
 
   // ====== POSTS ======
@@ -69,11 +80,17 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     var model = WordpressClone.Collections.blogs.getOrFetch(blogId);
     var view = new WordpressClone.Views.PostNew({model: model, blogId: blogId});
     this._swapView(view);
+    this.headerView.trigger("blogView", model);
   },
 
   postShow: function (blogId, postId) {
     var model = new WordpressClone.Models.Post({id: postId});
-    model.fetch();
+    var that = this;
+    WordpressClone.Collections.blogs.fetch(blogId, {
+      success: function () {
+        that.headerView.trigger("blogView", model);
+      }
+    });
     var view = new WordpressClone.Views.PostShow({model: model});
     this._swapView(view);
   },
@@ -82,12 +99,14 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     // render in the success callback to make sure the post content is there
     var model = new WordpressClone.Models.Post({id: postId});
     var that = this;
-    model.fetch({
+    WordpressClone.Collections.blogs.fetch(blogId, {
       success: function () {
         var view = new WordpressClone.Views.PostEdit({model: model});
         that._swapView(view);
+        that.headerView.trigger("blogView", model);
       }
     });
+    this.headerView.trigger("blogView", model);
   },
 
   // ====== PRIVATE ======
