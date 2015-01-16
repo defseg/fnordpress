@@ -160,6 +160,11 @@ h2 {
 }
 
 /* --- FORMS --- */
+
+form {
+  width: 50%;
+}
+
 .form {
   margin: 20px 0;
   background: #eee;
@@ -184,14 +189,17 @@ input[type="text"] {
   margin: 0 0 20px 0;
 }
 
+input[type="submit"] {
+  cursor: pointer;
+}
+
 label {
   display: block;
   font-weight: bold;
   padding: 0 0 5px 0;
 }
 
-input[type="text"], select,
-textarea {
+input[type="text"], select, input[type="password"], textarea {
   background: #fff;
   border: 1px solid #ccc;
   padding: 5px 10px;
