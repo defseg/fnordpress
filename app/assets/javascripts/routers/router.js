@@ -52,7 +52,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   blogShow: function (id) {
     // TODO remove WordpressClone.Collections.blogs
     var model = WordpressClone.Collections.blogs.getOrFetch(id);
-    // this.headerView.trigger("blogView", model);
+    this.headerView.trigger("blogView", model);
     var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/blogs/" + model.get('id') + "/posts";
     var view = new WordpressClone.Views.BlogShow({model: model, collection: collection});
@@ -80,8 +80,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
 
   postShow: function (blogId, postId) {
     var model = new WordpressClone.Models.Post({id: postId});
+    model.fetch();
     this.headerView.trigger("blogView", WordpressClone.Collections.blogs.getOrFetch(blogId))
-    console.log('FUCK FUCK FUCK')
     var view = new WordpressClone.Views.PostShow({model: model});
     this._swapView(view);
   },

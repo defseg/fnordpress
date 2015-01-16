@@ -152,6 +152,13 @@ h1 {
   font-weight: bold;
 }
 
+/* --- POSTS --- */
+
+h2 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
 /* --- FORMS --- */
 .form {
   margin: 20px 0;

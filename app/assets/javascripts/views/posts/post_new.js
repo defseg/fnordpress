@@ -24,7 +24,6 @@ WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
   },
 
   submit: function (event) {
-    alert(this._blogId)
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
     var newPost = new WordpressClone.Models.Post();
