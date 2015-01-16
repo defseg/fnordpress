@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  def email_md5
+    return @email_md5 if @email_md5
+
+    email_md5_obj = Digest::MD5.new
+    email_md5_obj.update self.email
+    @email_md5 = email_md5_obj.hexdigest
+    @email_md5
+  end
+
   def is_following?(blog)
     self.followed_blogs.include?(blog)
   end

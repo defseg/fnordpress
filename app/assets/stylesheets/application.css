@@ -29,14 +29,20 @@ h3, time, ul, li, small, form, label, input, textarea, button, a {
   background: transparent;
 }
 
+ul, li {
+  list-style: none;
+}
+
 .group:after {
   content: "";
   clear: both;
   display: block;
 }
 
-body {
+body, html {
   font-family: sans-serif;
+  background: #ccc;
+  height: 100%;
 }
 
 /* --- HEADER --- */
@@ -44,6 +50,7 @@ body {
 header {
   background: #333;
   color: #ddd;
+  height: 30px;
 }
 
 header ul {
@@ -53,12 +60,32 @@ header ul {
 
 header li {
   float: left;
+  height: 30px;
+  border-right: 1px solid #999;
 }
 
 header a, header input, header .pseudo-anchor {
-  padding: 10px 20px;
+  padding: 5px 20px;
   display: block;
-  border-right: 1px solid #999;
+  position: relative;
+}
+
+header .pseudo-anchor {
+  padding-left: 50px;
+}
+
+.avatar-container {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  left: 20px;
+}
+
+.pseudo-anchor img {
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 header a:hover, header input:hover {
@@ -75,7 +102,7 @@ header input {
 }
 
 header .user-login {
-  float: left;
+  float: right;
 }
 
 header .blog-header {
@@ -83,7 +110,18 @@ header .blog-header {
 }
 
 header .user-header-links {
-  float: right;
+  float: left;
+}
+
+/* --- MAIN --- */
+
+#main {
+  margin: auto;
+  display: block;
+  width: 75%;
+  height: calc(100% - 30px);
+  background: #fff;
+  padding: 5px;
 }
 
 .invis {

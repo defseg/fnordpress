@@ -3,7 +3,12 @@
     <ul class="user-login">
       <% if logged_in? %>
         <li id="username" data-username="<%= current_user.username %>">
-          <span class="pseudo-anchor">Hello <%= current_user.username %>.</span>
+          <div class="pseudo-anchor">
+            <span class="avatar-container">
+              <img src="http://www.gravatar.com/avatar/<%= current_user.email_md5 %>?d=identicon">
+            </span>
+            Hello <%= current_user.username %>.
+          </div>
         </li>
         <li><%= button_to "Log out", session_url, method: :delete %></li>
       <% else %>
