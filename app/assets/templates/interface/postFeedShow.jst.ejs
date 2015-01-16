@@ -1,4 +1,7 @@
 <div class="blog-post">
   <h2 class="blog-post-title"><a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a></h2> (<%= post.escape('commentCount') %> comments)
+  <% if (blog.escape('is_staff') === 'true') { %>
+    <a href="#blogs/<%= blog.escape('id') %>/posts/<%= post.escape('id') %>/edit">Edit</a>
+  <% } %>
   <%= post.get('content') %>
 </div>

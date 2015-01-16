@@ -1,6 +1,6 @@
 json.title @blog.title
 json.tagline @blog.tagline
-json.staff_ids @blog.staff.map { |s| s.id }
+json.is_staff @blog.staff.include?(current_user)
 json.is_following current_user.followed_blogs.include?(@blog)
 # json.posts @blog.posts.page(@page) do |post|
 #   json.id post.id

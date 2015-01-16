@@ -25,7 +25,7 @@ WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
     newPost.save(formData, {
       success: function () {
         that.model.posts().add(newPost);
-        Backbone.history.navigate('#/posts/' + newPost.escape('id'));
+        Backbone.history.navigate('#/blogs/' + newPost.escape('blog_id') + '/posts/' + newPost.escape('id'));
       }
     });
   }

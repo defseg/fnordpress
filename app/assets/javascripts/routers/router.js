@@ -11,9 +11,9 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     'blogs/new': 'blogNew',
     'users/:id': 'userShow',
     'blogs/:id': 'blogShow',
-    'blogs/:blogId/posts/:postId': 'postNew',
-    'posts/:id': 'postShow',
-    'posts/:id/edit': 'postEdit'
+    'blogs/:blogId/posts/new': 'postNew',
+    'blogs/:blogId/posts/:postId': 'postShow',
+    'blogs/:blogId/posts/:id/edit': 'postEdit'
   },
 
   // ====== MAIN  ======
@@ -64,22 +64,22 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
 
   // ====== POSTS ======
 
-  postNew: function (blogId, postId) {
+  postNew: function (blogId) {
     var model = WordpressClone.Collections.blogs.getOrFetch(blogId);
     var view = new WordpressClone.Views.PostNew({model: model});
     this._swapView(view);
   },
 
-  postShow: function (id) {
-    var model = new WordpressClone.Models.Post({id: id});
+  postShow: function (blogId, postId) {
+    var model = new WordpressClone.Models.Post({id: postId});
     model.fetch();
     var view = new WordpressClone.Views.PostShow({model: model});
     this._swapView(view);
   },
 
-  postEdit: function (id) {
+  postEdit: function (blogId, postId) {
     // render in the success callback to make sure the post content is there
-    var model = new WordpressClone.Models.Post({id: id});
+    var model = new WordpressClone.Models.Post({id: postId});
     var that = this;
     model.fetch({
       success: function () {
