@@ -122,7 +122,7 @@ header .user-header-links {
   margin: auto;
   display: block;
   width: 75%;
-  height: calc(100% - 30px);
+  min-height: calc(100% - 30px);
   background: #fff;
   padding: 5px;
 }
@@ -175,13 +175,16 @@ form {
 
 .form input[type="submit"] {
   float: right;
+}
+
+#main input[type="submit"], #main button {
   cursor: pointer;
   background: #ccc;
   border-radius: 3px;
   padding: 10px 20px;
 }
 
-.form input[type="submit"]:hover {
+#main input[type="submit"]:hover, #main button:hover {
   background: #999;
 }
 
@@ -189,7 +192,7 @@ input[type="text"] {
   margin: 0 0 20px 0;
 }
 
-input[type="submit"] {
+input[type="submit"], #main button {
   cursor: pointer;
 }
 
