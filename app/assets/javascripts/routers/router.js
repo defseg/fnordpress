@@ -1,6 +1,7 @@
 WordpressClone.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#main');
+    this.$headerEl = $('header#page-header');
   },
 
   // TODO: make these URLs look more Wordpress-like
@@ -66,7 +67,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
 
   postNew: function (blogId) {
     var model = WordpressClone.Collections.blogs.getOrFetch(blogId);
-    var view = new WordpressClone.Views.PostNew({model: model});
+    var view = new WordpressClone.Views.PostNew({model: model, blogId: blogId});
     this._swapView(view);
   },
 

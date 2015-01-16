@@ -1,7 +1,7 @@
 WordpressClone.Models.Blog = Backbone.Model.extend({
   urlRoot: 'api/blogs',
 
-  initialize: function () {
+  initialize: function (params) {
     this._page = 1;
   },
 

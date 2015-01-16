@@ -14,6 +14,78 @@
  *= require_self
  */
 
+html, body, header, footer, section, article, div, strong, img, p, h1, h2,
+h3, time, ul, li, small, form, label, input, textarea, button, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* --- HEADER --- */
+
+header {
+  background: #333;
+  color: #ddd;
+}
+
+header ul {
+  list-style: none;
+  border-left: 1px solid #999;
+}
+
+header li {
+  float: left;
+}
+
+header a, header input, header .pseudo-anchor {
+  padding: 10px 20px;
+  display: block;
+  border-right: 1px solid #999;
+}
+
+header a:hover, header input:hover {
+  background: #444;
+}
+
+header input {
+  cursor: pointer;
+}
+
+.header-nav {
+  margin: auto;
+  width: 75%;
+}
+
+header .user-login {
+  float: left;
+}
+
+header .blog-header {
+  float: left;
+}
+
+header .user-header-links {
+  float: right;
+}
+
 .invis {
   display: none;
 }

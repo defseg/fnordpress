@@ -9,7 +9,7 @@ class Permission < ActiveRecord::Base
   # }
 
   enum role: {
-    administrator: 1
+    administrator: 0
   }
 
   validates :user_id, presence: true

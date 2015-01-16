@@ -35,6 +35,7 @@ class PostsController < ApplicationController
   end
 
   def require_permissions!
+    puts params
     blog = Blog.find(params[:blog_id])
     return if blog.staff.include?(current_user)
     flash[:errors] = ["You aren't authorized to do that!"]

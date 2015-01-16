@@ -2,13 +2,20 @@ WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
 
   template: JST['posts/form'],
 
+  initialize: function (params) {
+    this._blogId = params.blogId;
+  },
+
   events: {
     'submit .post-form': 'submit'
   },
 
   render: function () {
+    var blogId = (this.model.isNew()) ? this._blogId : this.model.get('id');
+
+
     var content = this.template({post: new WordpressClone.Models.Post(),
-                                 blog: this.model});
+                                 blog: this.model, blogId: blogId});
     this.$el.html(content);
     var dropdown = new WordpressClone.Views.PostStatusDropdown();
     this.addSubview('.status-dropdown', dropdown);
@@ -25,7 +32,7 @@ WordpressClone.Views.PostNew = Backbone.CompositeView.extend({
     newPost.save(formData, {
       success: function () {
         that.model.posts().add(newPost);
-        Backbone.history.navigate('#/blogs/' + newPost.escape('blog_id') + '/posts/' + newPost.escape('id'));
+        Backbone.history.navigate('#/blogs/' + this._blogId + '/posts/' + newPost.escape('id'));
       }
     });
   }

@@ -1,15 +1,25 @@
-<header>
-  <ul class="user-login">
+<header id="page-header">
+  <div class="header-nav group">
+    <ul class="user-login">
+      <% if logged_in? %>
+        <li id="username" data-username="<%= current_user.username %>">
+          <span class="pseudo-anchor">Hello <%= current_user.username %>.</span>
+        </li>
+        <li><%= button_to "Log out", session_url, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Log in", new_session_url %> or <%= link_to "sign up", new_user_url %></li>
+      <% end %>
+      </li>
+    </ul>
+    <ul class="blog-header">
+    </ul>
     <% if logged_in? %>
-      <li>Hello <%= current_user.username %>.</li>
-      <li><%= button_to "Log out", session_url, method: :delete %></li>
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="#my_blogs">My Blogs</a></li>
-    <% else %>
-      <li><%= link_to "Log in", new_session_url %> or <%= link_to "sign up", new_user_url %></li>
+      <ul class="user-header-links">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#me">My Blogs</a></li>
+      </ul>
     <% end %>
-    </li>
-  </ul>
+  </div>
 </header>
 
 <!-- TODO backbone auth -->
