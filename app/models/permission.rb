@@ -1,11 +1,15 @@
 class Permission < ActiveRecord::Base
 
+  # enum role: {
+  #   owner: 0,
+  #   administrator: 1,
+  #   editor: 2,
+  #   author: 3,
+  #   contributor: 4
+  # }
+
   enum role: {
-    owner: 0,
-    administrator: 1,
-    editor: 2,
-    author: 3,
-    contributor: 4
+    administrator: 1
   }
 
   validates :user_id, presence: true
