@@ -7,7 +7,7 @@ WordpressClone.Views.Header = Backbone.CompositeView.extend({
 
   blogView: function (model) {
     $('.blog-header').removeClass('invis');
-    $('.blog-header-li').html('<a>' + model.escape('title') + '</a>')
+    $('.blog-header-li').html('<a href="#/blogs/' + model.escape('id') + '">' + model.escape('title') + '</a>')
     if (this._currentSubview) this.removeSubview('.blog-header', this._currentSubview);
     var followButton = new WordpressClone.Views.FollowButton({model: model});
     this.addSubview('.blog-header', followButton);
