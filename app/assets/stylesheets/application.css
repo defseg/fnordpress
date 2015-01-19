@@ -97,7 +97,7 @@ header .pseudo-anchor {
   display: inline-block;
 }
 
-header a:hover, header input:hover {
+header a:hover, header input:hover, .follow-button:hover {
   background: #444;
 }
 
@@ -121,6 +121,10 @@ header .user-login {
 
 header .user-header-links {
   float: left;
+}
+
+.follow-button {
+  cursor: pointer;
 }
 
 
