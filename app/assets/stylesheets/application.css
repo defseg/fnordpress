@@ -60,6 +60,7 @@ header {
   background: #333;
   color: #ddd;
   height: 30px;
+  overflow: hidden;
 }
 
 header ul {

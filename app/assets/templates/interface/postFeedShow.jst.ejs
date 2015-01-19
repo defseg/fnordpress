@@ -1,4 +1,4 @@
-<div class="blog-post">
+<div class="blog-post blog-post-<%= post.escape('id') %>">
   <h2 class="blog-post-title"><a href="#blogs/<%= post.escape('blog_id') %>/posts/<%= post.escape('id') %>"><%= post.escape('title') %></a></h2> (<%= post.escape('commentCount') %> comments)
   <% if (blog.escape('is_staff') === 'true') { %>
     <a href="#blogs/<%= blog.escape('id') %>/posts/<%= post.escape('id') %>/edit">Edit</a>

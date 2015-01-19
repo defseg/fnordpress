@@ -23,7 +23,6 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({blog: this.model});
     this.$el.html(content);
-    this.renderPosts();
     WordpressClone.headerView.trigger("blogView", this.model);
     // TODO: don't want to spend time on this now but might be faster to cache height
     // if this goes back in, will need a resize listener to force recalculation
