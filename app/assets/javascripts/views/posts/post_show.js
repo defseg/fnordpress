@@ -51,6 +51,11 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
       postShow.$('ul.' + commentKey).append(commentsByParent[commentKey]);
     });
 
+    var blog = new WordpressClone.Models.Blog({id: this.model.get('blog_id'),
+                                               title: this.model.escape('blog_title')});
+    console.log(blog);
+    WordpressClone.headerView.trigger("blogView", blog);
+
     return this;
   },
 

@@ -74,13 +74,11 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     var model = WordpressClone.Collections.blogs.getOrFetch(blogId);
     var view = new WordpressClone.Views.PostNew({model: model, blogId: blogId});
     this._swapView(view);
-    WordpressClone.headerView.trigger("blogView", model);
   },
 
   postShow: function (blogId, postId) {
     var model = new WordpressClone.Models.Post({id: postId});
     model.fetch();
-    WordpressClone.headerView.trigger("blogView", WordpressClone.Collections.blogs.getOrFetch(blogId))
     var view = new WordpressClone.Views.PostShow({model: model});
     this._swapView(view);
   },
