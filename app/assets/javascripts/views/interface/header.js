@@ -16,7 +16,7 @@ WordpressClone.Views.Header = Backbone.CompositeView.extend({
 
   blogUnview: function () {
     this.stopListening();
-    this.removeSubview('.blog-header', this._currentSubview);
+    if (this._currentSubview) this.removeSubview('.blog-header', this._currentSubview);
     $('.blog-header').addClass('invis');
   }
 });
