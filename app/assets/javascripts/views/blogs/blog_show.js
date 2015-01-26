@@ -34,7 +34,7 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
     var that = this;
     var blog_id = this.model.get('id')
     this.collection.each(function (post) {
-      var postView = new WordpressClone.Views.PostFeedShow({model: post, blog_id: that.model.get('id')});
+      var postView = new WordpressClone.Views.PostFeedShow({model: post, blog: that.model});
       that.addSubview('#posts', postView);
     });
   },

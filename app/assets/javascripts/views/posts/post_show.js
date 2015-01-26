@@ -53,7 +53,7 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
 
     var blog = new WordpressClone.Models.Blog({id: this.model.get('blog_id'),
                                                title: this.model.escape('blog_title')});
-    console.log(blog);
+    blog.fetch();
     WordpressClone.headerView.trigger("blogView", blog);
 
     return this;
