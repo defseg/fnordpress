@@ -22,7 +22,6 @@ WordpressClone.Views.BlogNew = Backbone.View.extend({
       success: function () {
         // TODO: going to remove this collection later...?
         // may want to pass a collection to this template
-        WordpressClone.Collections.blogs.add(newBlog);
         Backbone.history.navigate("#/blogs/" + newBlog.escape('id'));
       }
     });

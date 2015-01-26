@@ -137,6 +137,12 @@ header .user-header-links {
   width: 75%;
   min-height: calc(100% - 30px);
   background: #fff;
+  padding-top: 10px;
+}
+
+#main > * {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #main a {
@@ -179,8 +185,7 @@ form {
 
 .form {
   margin: 20px 0;
-  background: #eee;
-  padding: 20px 80px;
+  padding: 20px 0;
   width: 50%;
   position: relative;
 }

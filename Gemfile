@@ -51,6 +51,9 @@ end
 gem 'newrelic_rpm'
 gem 'kaminari'
 
+gem 'devise'
+gem 'figaro'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
