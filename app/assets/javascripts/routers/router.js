@@ -29,6 +29,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     var view = new WordpressClone.Views.PostFeed({collection: collection});
     this._swapView(view);
     WordpressClone.headerView.trigger("blogUnview");
+
+    // You can't edit your own posts from here. This is intentional.
   },
 
   // ====== USERS ======
@@ -85,7 +87,16 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   postEdit: function (blogId, postId) {
-    
+    // fetching the model anew because some data isn't sent up (status, etc.)
+    this._swapBlog(blogId);
+    var model = new WordpressClone.Models.Post({id: postId});
+    var that = this;
+    model.fetch({
+      success: function () {
+        var view = new WordpressClone.Views.PostEdit({model: model, blogId: blogId});
+        that._swapView(view);
+      }
+    })
   },
 
   // ====== PRIVATE ======

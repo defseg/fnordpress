@@ -36,6 +36,8 @@ class Api::PostsController < Api::ApiController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
+      @post.content = simple_format(@post.content)
+      puts @post.content
       render json: @post
     else
       render json: @post.errors.full_messages, status: :unprocessable_entity

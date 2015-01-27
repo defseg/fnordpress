@@ -3,7 +3,7 @@
   <label>Title
     <input type="text" name="post[title]" value="<%= post.escape('title') %>">
   </label><br>
-
+  <% console.log(post) %>
   <label>Content<br>
     <textarea name="post[content]" rows="16" cols="80"><%= post.escape('content') %></textarea>
   </label>
