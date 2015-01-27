@@ -10,4 +10,11 @@ class Blog < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user, dependent: :destroy
 
+  def self.most_followed(page = 1, per = 5)
+    Blog.joins(:follows)
+        .group("blogs.id")
+        .page(page).per(per)
+        .order("COUNT(follows) DESC")
+  end
+
 end

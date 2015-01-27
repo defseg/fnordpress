@@ -31,6 +31,13 @@ class Post < ActiveRecord::Base
     Post.page(page).per(per).order("views DESC")
   end
 
+  def self.most_commented(page = 1, per = 5)
+    Post.joins(:comments)
+        .group("posts.id")
+        .page(page).per(per)
+        .order("COUNT(comments) DESC")
+  end
+
   private
 
   def enforce_published_at
