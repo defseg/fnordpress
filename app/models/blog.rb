@@ -6,8 +6,8 @@ class Blog < ActiveRecord::Base
 
   has_many :permissions, inverse_of: :blog
   has_many :staff, through: :permissions, source: :user
-  has_many :posts
-  has_many :follows
-  has_many :followers, through: :follows, source: :user
+  has_many :posts, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :followers, through: :follows, source: :user, dependent: :destroy
 
 end
