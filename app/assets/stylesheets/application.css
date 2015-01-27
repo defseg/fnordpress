@@ -75,7 +75,7 @@ header li {
 }
 
 header a, header input, header .pseudo-anchor, header button {
-  padding: 6px 20px;
+  padding: 8px 20px;
   display: block;
   position: relative;
 }
@@ -174,7 +174,7 @@ h1 {
 
 h2 {
   font-size: 24px;
-  margin: 20px 0;
+  margin-top: 20px;
 }
 
 /* --- FORMS --- */

@@ -27,7 +27,6 @@ WordpressClone.Views.PostEdit = Backbone.CompositeView.extend({
     var that = this;
     this.model.save(formData, {
       success: function () {
-        console.log(that.model.get('content'));
         Backbone.history.navigate('#/blogs/' + that.model.escape('blog_id') + '/posts/' + that.model.escape('id'));
       }
     });
