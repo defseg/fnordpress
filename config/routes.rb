@@ -19,4 +19,7 @@ Rails.application.routes.draw do
     end
   end
   resource :session
+
+  # to create a new guest account
+  post '/guest', to: 'users#new_guest', as: :new_guest 
 end
