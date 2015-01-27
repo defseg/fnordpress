@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  before_create :enforce_published_at
+  before_create :enforce_published_at, :enforce_views
 
   enum status: {
     published: 0,
@@ -21,18 +21,24 @@ class Post < ActiveRecord::Base
 
   def comments_by_parent
     comments_by_parent = Hash.new { |h, k| h[k] = [] }
-
     self.comments.includes(:author).each do |comment|
       comments_by_parent[comment.parent_comment_id] << comment
     end
-
     comments_by_parent
+  end
+
+  def self.most_viewed(page = 1, per = 5)
+    Post.page(page).per(per).order("views DESC")
   end
 
   private
 
   def enforce_published_at
     self.published_at = Time.now if !(self.published_at) && self.status == 0
+  end
+
+  def enforce_views
+    self.views = 0 unless self.views
   end
 
 end

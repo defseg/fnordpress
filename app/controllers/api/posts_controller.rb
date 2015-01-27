@@ -8,6 +8,7 @@ class Api::PostsController < Api::ApiController
     post = current_user.posts.new(post_params)
     post.published_at = (post.status == "published") ? Time.now : nil
     post.content = simple_format(post.content)
+    post.views = 0
     if post.save
       render json: post
     else
@@ -18,6 +19,10 @@ class Api::PostsController < Api::ApiController
   # TODO: may have to have another template for fetching unpublished posts
   def show
     @post = Post.find(params[:id])
+    unless current_user && current_user.id == @post.author_id
+      @post.views += 1
+      @post.save
+    end
     @comments = @post.comments
     render :show
   end
