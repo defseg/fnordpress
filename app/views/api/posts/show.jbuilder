@@ -7,6 +7,6 @@ json.comments @comments do |comment|
   json.id comment.id
   json.parent_comment_id comment.parent_comment_id
   json.content comment.content
-  json.author comment.author.username
+  json.author comment.author.email
   json.created_at comment.created_at
 end

@@ -2,15 +2,15 @@
   <div class="header-nav group">
     <ul class="user-login">
       <% if logged_in? %>
-        <li id="username" data-username="<%= current_user.username %>">
+        <li>
           <div class="pseudo-anchor">
             <span class="avatar-container">
               <img src="http://www.gravatar.com/avatar/<%= current_user.email_md5 %>?d=identicon">
             </span>
-            Hello <%= current_user.username %>.
+            Hello.
           </div>
         </li>
-        <li><%= button_to "Log out", session_url, method: :delete %></li>
+        <li><%= button_to "Log out", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li class="guest"><%= button_to "Log in as guest", new_guest_url %></li>
         <li><%= link_to "Log in", new_session_url %></li>

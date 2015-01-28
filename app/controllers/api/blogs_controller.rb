@@ -1,6 +1,5 @@
 class Api::BlogsController < Api::ApiController
   before_action :require_permissions!, only: [:edit, :update]
-  before_action :require_signed_in!, only: [:create, :index]
 
   def create
     blog = Blog.new(blog_params)

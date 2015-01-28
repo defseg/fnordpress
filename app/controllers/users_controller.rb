@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    redirect_to new_user_registration_path
   end
 
   def create
@@ -21,13 +21,11 @@ class UsersController < ApplicationController
 
   def new_guest
     new_id = (User.last.id + 1).to_s
-    puts "hello\n\n\n\n\n\n\n\n\n\n\n\n"
-    user = User.new(username: "guest" + new_id,
-                    password: "guestguest",
+    user = User.new(password: "guestguest",
                     email: "guest" + new_id + "@example.com")
 
     if user.save
-      log_in(user)
+      sign_in(user)
       redirect_to root_url
     else
       flash[:errors] = user.errors.full_messages
@@ -38,6 +36,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:password, :email)
   end
 end

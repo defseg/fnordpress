@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
-  validates :username, :password_digest, presence: true
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   validates :password, length: {minimum: 6, allow_nil: true}
   attr_reader :password
 
-  validates :username, length: {maximum: 30}
   validates :email, presence: true, length: {maximum: 255}
 
   has_many :permissions
@@ -13,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :followed_blogs, through: :follows, source: :blog
 
-  after_initialize :ensure_session_token
+  # after_initialize :ensure_session_token
 
   def email_md5
     return @email_md5 if @email_md5
@@ -28,31 +31,31 @@ class User < ActiveRecord::Base
     self.followed_blogs.include?(blog)
   end
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
-    return nil unless user && user.is_password?(password)
-    user
-  end
-
-  def password=(password)
-    @password = password
-    self.password_digest = BCrypt::Password.create(password)
-  end
-
-  def is_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
-  end
-
-  def reset_token!
-    self.session_token = SecureRandom.urlsafe_base64
-    self.save!
-    self.session_token
-  end
-
-  private
-
-  def ensure_session_token
-    self.session_token ||= SecureRandom.urlsafe_base64
-  end
+  # def self.find_by_credentials(username, password)
+  #   user = User.find_by(username: username)
+  #   return nil unless user && user.is_password?(password)
+  #   user
+  # end
+  #
+  # def password=(password)
+  #   @password = password
+  #   self.password_digest = BCrypt::Password.create(password)
+  # end
+  #
+  # def is_password?(password)
+  #   BCrypt::Password.new(self.password_digest).is_password?(password)
+  # end
+  #
+  # def reset_token!
+  #   self.session_token = SecureRandom.urlsafe_base64
+  #   self.save!
+  #   self.session_token
+  # end
+  #
+  # private
+  #
+  # def ensure_session_token
+  #   self.session_token ||= SecureRandom.urlsafe_base64
+  # end
 
 end
