@@ -23,13 +23,15 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   mainPage: function () {
     var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/follows";
+    var that = this;
     collection.fetch({
-      data: {page: 1}
+      data: {page: 1},
+      success: function () {
+        var view = new WordpressClone.Views.PostFeed({collection: collection});
+        that._swapView(view);
+        WordpressClone.headerView.trigger("blogUnview");
+      }
     });
-    var view = new WordpressClone.Views.PostFeed({collection: collection});
-    this._swapView(view);
-    WordpressClone.headerView.trigger("blogUnview");
-
     // You can't edit your own posts from here. This is intentional.
   },
 

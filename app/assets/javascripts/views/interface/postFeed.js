@@ -12,7 +12,6 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({feed: this.collection});
     this.$el.html(content);
-    this.renderPosts();
     return this;
   },
 
