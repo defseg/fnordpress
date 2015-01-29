@@ -13,8 +13,8 @@
         <li><%= button_to "Log out", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li class="guest"><%= button_to "Log in as guest", new_guest_url %></li>
-        <li><%= link_to "Log in", new_session_url %></li>
-        <li><%= link_to "Sign up", new_user_url %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
       <% end %>
       </li>
     </ul>
