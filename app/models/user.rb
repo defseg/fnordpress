@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :password, length: {minimum: 6, allow_nil: true}
@@ -9,12 +9,13 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, length: {maximum: 255}
 
-  has_many :permissions
+  has_many :permissions, dependent: :destroy
   has_many :blogs, through: :permissions
   has_many :posts, foreign_key: :author_id
   has_many :comments, foreign_key: :author_id
   has_many :follows
   has_many :followed_blogs, through: :follows, source: :blog
+  has_many :authorizations, dependent: :destroy
 
   # after_initialize :ensure_session_token
 

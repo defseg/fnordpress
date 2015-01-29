@@ -54,6 +54,10 @@ gem 'kaminari'
 gem 'devise'
 gem 'figaro'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'uuidtools'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

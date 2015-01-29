@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   root to: 'static_pages#root'
 
   namespace :api do
@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   resource :session
 
   # to create a new guest account
-  post '/guest', to: 'users#new_guest', as: :new_guest 
+  post '/guest', to: 'users#new_guest', as: :new_guest
 end
