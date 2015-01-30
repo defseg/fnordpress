@@ -7,12 +7,6 @@ WordpressClone.Views.BlogShow = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.renderPosts);
   },
 
-  // <% blog.posts().each (function (post) { %>
-  //   <h2 class="blog-post-title"><a href="<%= '#/posts/' + post.escape('id') %>"><%= post.escape('title') %></a></h2> (<%= post.escape('commentCount') %> comments)
-  //   <%= post.get('content') %>
-  //   <% }) %>
-  //
-
   events: {
     'submit #new-post': 'submit',
     'click .prev-page': 'prevPage',
