@@ -22,8 +22,6 @@ class Permission < ActiveRecord::Base
 
   private
 
-  # before save,
-
   def owners_and_admins_are_always_moderators
     if ["owner", "administrator"].include?(role)
       is_moderator = true
