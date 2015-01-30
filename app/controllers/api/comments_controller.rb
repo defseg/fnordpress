@@ -1,5 +1,4 @@
 class Api::CommentsController < Api::ApiController
-
   before_action :require_permissions!, only: [:update]
   before_action :require_author_or_permissions!, only: [:destroy]
 
@@ -52,5 +51,4 @@ class Api::CommentsController < Api::ApiController
     flash[:errors] = ["You aren't authorized to do that!"]
     redirect_to blog_url(blog)
   end
-
 end

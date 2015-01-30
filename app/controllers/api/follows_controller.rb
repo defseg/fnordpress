@@ -1,5 +1,4 @@
 class Api::FollowsController < Api::ApiController
-
   def index
     @page = params[:page] || 1
 
@@ -18,6 +17,7 @@ class Api::FollowsController < Api::ApiController
   def create
     @blog = Blog.find(params[:blog_id])
     @follow = @blog.follows.new(user_id: current_user.id)
+
     if @follow.save
       render json: @follow
     else
@@ -38,7 +38,6 @@ class Api::FollowsController < Api::ApiController
   # TODO: add blog/:blog_id/follows controller
 
   def create
-    puts params[:blog_id]
     follow = current_user.follows.new(blog_id: params[:blog_id])
 
     if follow.save

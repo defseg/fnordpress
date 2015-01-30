@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
   has_many :followed_blogs, through: :follows, source: :blog
   has_many :authorizations, dependent: :destroy
 
-  # after_initialize :ensure_session_token
-
   def email_md5
     return @email_md5 if @email_md5
 
@@ -37,26 +35,4 @@ class User < ActiveRecord::Base
     return nil unless user && user.valid_password?(password)
     user
   end
-  #
-  # def password=(password)
-  #   @password = password
-  #   self.password_digest = BCrypt::Password.create(password)
-  # end
-  #
-  # def is_password?(password)
-  #   BCrypt::Password.new(self.password_digest).is_password?(password)
-  # end
-  #
-  # def reset_token!
-  #   self.session_token = SecureRandom.urlsafe_base64
-  #   self.save!
-  #   self.session_token
-  # end
-  #
-  # private
-  #
-  # def ensure_session_token
-  #   self.session_token ||= SecureRandom.urlsafe_base64
-  # end
-
 end
