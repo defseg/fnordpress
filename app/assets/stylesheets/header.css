@@ -1,0 +1,107 @@
+header {
+  background: #333;
+  color: #ddd;
+  height: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-list {
+  list-style: none;
+  border-left: 1px solid #999;
+}
+
+.header-list li {
+  float: left;
+  height: 32px;
+  border-right: 1px solid #999;
+}
+
+header a, header input, header .pseudo-anchor, header button {
+  padding: 8px 20px;
+  display: block;
+  position: relative;
+}
+
+header .pseudo-anchor {
+  padding-left: 50px;
+}
+
+.avatar-container {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -11px;
+  left: 20px;
+}
+
+.pseudo-anchor img {
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+header a:hover, header input:hover, .follow-button:hover {
+  background: #444;
+}
+
+header input {
+  cursor: pointer;
+}
+
+.header-nav {
+  margin: 0 auto;
+  width: 75%;
+}
+
+header .blog-header {
+  float: left;
+  border-left: none;
+}
+
+header .user-login {
+  float: right;
+}
+
+header .user-header-links {
+  float: left;
+}
+
+/* dropdown */
+
+.dropdown {
+  display: none;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #333;
+  left: -1px;
+  right: -1px;
+}
+
+.dropdown {
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+}
+
+.header-list > li {
+  position: relative;
+}
+
+li:hover .dropdown {
+  display: block;
+}
+
+.dropdown li, .dropdown a {
+  width: 100%;
+}
+
+/* --- other --- */
+
+.follow-button {
+  cursor: pointer;
+}
+
+.guest {
+  background: #171;
+}

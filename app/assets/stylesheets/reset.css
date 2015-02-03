@@ -1,0 +1,39 @@
+html, body, header, footer, section, article, div, strong, img, h1, h2,
+h3, time, header ul, header li, small, form, label, input, textarea, button, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+h1, h2, h3 {
+  display: block;
+}
+
+ul, li {
+  list-style: none;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+body, html {
+  font-family: sans-serif;
+  background: #ccc;
+  height: 100%;
+  font-size: 16px;
+}
+
+div, p {
+  word-wrap: break-word;
+}

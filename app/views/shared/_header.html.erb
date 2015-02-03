@@ -1,6 +1,6 @@
 <header id="page-header">
-  <div class="header-nav group">
-    <ul class="user-login">
+  <nav class="header-nav group">
+    <ul class="header-list user-login">
       <% if logged_in? %>
         <li>
           <div class="pseudo-anchor">
@@ -19,16 +19,23 @@
       </li>
     </ul>
     <% if logged_in? %>
-      <ul class="user-header-links">
-        <li><a href="#">Dashboard</a></li>
+      <ul class="header-list user-header-links group">
+        <li><a href="#">Dashboard</a>
+          <ul class="dropdown">
+            <li>
+              <a href="#">foo</a>
+            </li>
+            <li>
+              <a href="#">bar</a>
+            </li>
+          </ul>
+        </li>
         <li><a href="#me">My Blogs</a></li>
       </ul>
     <% end %>
-    <ul class="blog-header invis group">
+    <ul class="header-list blog-header invis group">
       <li class="blog-header-li">
       </li>
     </ul>
-  </div>
+  </nav>
 </header>
-
-<!-- TODO backbone auth -->
