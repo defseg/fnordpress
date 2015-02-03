@@ -1,20 +1,27 @@
+$shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.4);
+
+@mixin shadow {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow:    $shadow;
+  box-shadow:         $shadow;
+}
+
 header {
   background: #333;
   color: #ddd;
   height: 32px;
   position: relative;
   z-index: 1;
+  @include shadow;
 }
 
 .header-list {
   list-style: none;
-  border-left: 1px solid #999;
 }
 
 .header-list li {
   float: left;
   height: 32px;
-  border-right: 1px solid #999;
 }
 
 header a, header input, header .pseudo-anchor, header button {
@@ -67,7 +74,7 @@ header .user-header-links {
   float: left;
 }
 
-/* dropdown */
+
 
 .dropdown {
   display: none;
@@ -75,13 +82,11 @@ header .user-header-links {
   white-space: nowrap;
   overflow: hidden;
   background: #333;
-  left: -1px;
-  right: -1px;
+  width: 100%;
 }
 
 .dropdown {
-  border-left: 1px solid #999;
-  border-right: 1px solid #999;
+  @include shadow;
 }
 
 .header-list > li {
@@ -92,11 +97,11 @@ li:hover .dropdown {
   display: block;
 }
 
-.dropdown li, .dropdown a {
+.dropdown li {
   width: 100%;
 }
 
-/* --- other --- */
+
 
 .follow-button {
   cursor: pointer;
