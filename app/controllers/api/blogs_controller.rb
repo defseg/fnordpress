@@ -21,6 +21,10 @@ class Api::BlogsController < Api::ApiController
     render :show
   end
 
+  def edit
+    # send up blog with all params, then send up posts
+  end
+
   def index
     render json: current_user.blogs
   end

@@ -13,6 +13,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     'blogs/new': 'blogNew',
     'users/:id': 'userShow',
     'blogs/:id': 'blogShow',
+    'blogs/:id/edit': 'blogEdit',
     'blogs/:blogId/posts/new': 'postNew',
     'blogs/:blogId/posts/:postId': 'postShow',
     'blogs/:blogId/posts/:id/edit': 'postEdit'
@@ -46,6 +47,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   // ====== BLOGS ======
+  // helper vars: this._swapBlog() and this._currentBlog 
 
   blogNew: function () {
     var view = new WordpressClone.Views.BlogNew();
@@ -63,6 +65,10 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     collection.fetch({data: {page: 1}, success: function () {
       that._swapView(view)
     }});
+  },
+
+  blogEdit: function (id) {
+    this._swapBlog(id);
   },
 
   blogsIndex: function (id) {
