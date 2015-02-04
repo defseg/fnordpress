@@ -21,14 +21,6 @@
     <% if logged_in? %>
       <ul class="header-list user-header-links group">
         <li><a href="#">Dashboard</a>
-          <ul class="dropdown">
-            <li>
-              <a href="#">foo</a>
-            </li>
-            <li>
-              <a href="#">bar</a>
-            </li>
-          </ul>
         </li>
         <li>
           <a href="#me">My Blogs</a>
@@ -36,6 +28,14 @@
             <% current_user.blogs.each do |blog| %>
               <li data-id="<%= blog.id %>">
                 <a href="#blogs/<%= blog.id %>"> <%= blog.title %> </a>
+                <ul class="nested-dropdown blogs-nested-dropdown">
+                  <li>
+                    <a href="#">New Post</a>
+                  </li>
+                  <li>
+                    <a href="#">Edit Blog</a>
+                  </li>
+                </ul>
               </li>
             <% end %>
           </ul>
