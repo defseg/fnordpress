@@ -22,7 +22,9 @@ class Api::BlogsController < Api::ApiController
   end
 
   def edit
-    # send up blog with all params, then send up posts
+    @blog = Blog.find(params[:id])
+    @posts = @blog.posts.page(params[:page] || 1)
+    render :edit
   end
 
   def index

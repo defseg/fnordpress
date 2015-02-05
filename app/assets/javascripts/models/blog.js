@@ -5,7 +5,6 @@ WordpressClone.Models.Blog = Backbone.Model.extend({
     this._page = 1;
   },
 
-  // TODO: there will be a gem to pull n posts and save where you are
   parse: function (response) {
     if (response.posts) {
       this.posts().set(response.posts, {parse: true});

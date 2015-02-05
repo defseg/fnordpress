@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :blogs do
-    resources :posts do
-      resources :comments
-    end
-  end
+  # resources :blogs do
+  #   resources :posts do
+  #     resources :comments
+  #   end
+  # end
   resource :session
 
   # to create a new guest account

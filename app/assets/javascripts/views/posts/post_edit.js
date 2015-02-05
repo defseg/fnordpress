@@ -16,8 +16,7 @@ WordpressClone.Views.PostEdit = Backbone.CompositeView.extend({
     this.$el.html(content);
     var dropdown = new WordpressClone.Views.PostStatusDropdown();
     this.addSubview('.status-dropdown', dropdown);
-
-      return this;
+    return this;
     },
 
   submit: function (event) {

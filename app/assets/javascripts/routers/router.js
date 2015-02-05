@@ -2,6 +2,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#main');
     this.$headerEl = $('header#page-header');
+    // blogView triggers go in the views so they trigger on sync render
     WordpressClone.headerView = new WordpressClone.Views.Header({el: '#page-header'});
   },
 
@@ -47,7 +48,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   // ====== BLOGS ======
-  // helper vars: this._swapBlog() and this._currentBlog 
+  // helper vars: this._swapBlog() and this._currentBlog
 
   blogNew: function () {
     var view = new WordpressClone.Views.BlogNew();
@@ -57,7 +58,6 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
 
   blogShow: function (id) {
     this._swapBlog(id);
-
     var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/blogs/" + this._currentBlog.get('id') + "/posts";
     var view = new WordpressClone.Views.BlogShow({model: this._currentBlog, collection: collection});
@@ -68,7 +68,16 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   },
 
   blogEdit: function (id) {
-    this._swapBlog(id);
+    // _swapBlog won't work here; we're going to have to fetch the data anyway
+    // the edit jbuilder is designed to be compatible with everything else
+    // that is, we should be able to stick things in _currentBlog here
+    // and go on to use _currentBlog elsewhere when we click something else
+    this._currentBlog = new WordpressClone.Models.Blog();
+    this._currentBlog.url = "api/blogs/" + id + "/edit";
+    this._currentBlog.fetch();
+    var view = new WordpressClone.Views.BlogEdit({model: this._currentBlog});
+    this._swapView(view);
+
   },
 
   blogsIndex: function (id) {
