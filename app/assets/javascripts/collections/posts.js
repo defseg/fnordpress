@@ -6,8 +6,11 @@ WordpressClone.Collections.Posts = Backbone.Collection.extend({
     this._page = 1;
   },
 
-  parse: function (response) {
-
-    return response;
-  },
+  includes: function (id) {
+    // alas
+    for (var i = 0; i < this.length; i++) {
+      if (this.models[i].get('id') === id) return true;
+    }
+    return false;
+  }
 });

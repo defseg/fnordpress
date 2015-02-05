@@ -72,6 +72,7 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     // the edit jbuilder is designed to be compatible with everything else
     // that is, we should be able to stick things in _currentBlog here
     // and go on to use _currentBlog elsewhere when we click something else
+    // TODO: added .includes(id) to posts collection, so use that here
     this._currentBlog = new WordpressClone.Models.Blog();
     this._currentBlog.url = "api/blogs/" + id + "/edit";
     this._currentBlog.fetch();
