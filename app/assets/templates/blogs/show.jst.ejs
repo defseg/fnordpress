@@ -1,7 +1,3 @@
-<% if (blog.escape('is_staff') === 'true') { %>
-  <a href='<%="#/blogs/" + blog.escape('id') + "/posts/new" %>'>New Post</a>
-<% } %>
-
 <section class="blog-header">
   <h1><%= blog.escape('title') %></h1>
   <em><%= blog.escape('tagline') %></em>

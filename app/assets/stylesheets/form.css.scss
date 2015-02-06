@@ -1,16 +1,25 @@
+@import 'shadow';
+
 form {
   width: 50%;
 }
 
 .form {
   margin: 20px 0;
-  padding: 20px 0;
-  width: 50%;
+  width: 100%;
+  padding: 20px 20px 50px 20px;
+  border-radius: 5px;
   position: relative;
+  background: #eef;
+}
+
+#main > div > form {
+  @include shadow;
 }
 
 .form input[type="submit"] {
-  float: right;
+  position: absolute;
+  right: calc(5% - 4px);
 }
 
 #main input[type="submit"], #main button {
@@ -22,10 +31,6 @@ form {
 
 #main input[type="submit"]:hover, #main button:hover {
   background: #999;
-}
-
-input[type="text"], {
-  margin: 0 0 20px 0;
 }
 
 input[type="submit"], #main button {
@@ -40,17 +45,17 @@ input[type="text"], select, input[type="password"], textarea, input[type="email"
   background: #fff;
   border: 1px solid #ccc;
   padding: 5px 10px;
-  width: 100%;
+  width: 95%;
   font-weight: normal;
   display: block;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .post-status-label {
-  position: absolute;
-  left: 100%;
-  width: 200px;
-  top: 20px;
+  float: left;
+  width: 50%;
+  display: inline-block;
 }
 
 input > textarea {
