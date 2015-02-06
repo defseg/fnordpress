@@ -1,5 +1,8 @@
 <div class="blog-post box blog-post-<%= post.escape('id') %>">
-  <h2 class="blog-post-title"><a href="#blogs/<%= post.escape('blog_id') %>/posts/<%= post.escape('id') %>"><%= post.escape('title') %></a></h2> (<%= post.escape('commentCount') %> comments)
+  <h2 class="blog-post-title"><a href="#blogs/<%= post.escape('blog_id') %>/posts/<%= post.escape('id') %>"><%= post.escape('title') %></a></h2>
+  <% if (post.escape('commentCount')) { %>
+    (<%= post.escape('commentCount') %> comments)
+  <% } %>
   <% if (blog.escape('is_staff') === 'true') { %>
     <a href="#blogs/<%= blog.escape('id') %>/posts/<%= post.escape('id') %>/edit">Edit</a>
   <% } %>
