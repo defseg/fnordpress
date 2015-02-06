@@ -1,0 +1,74 @@
+@import 'shadow';
+@import 'colors';
+
+#main {
+  margin: auto;
+  display: block;
+  width: 75%;
+  min-height: calc(100% - 30px);
+  padding-top: 10px;
+}
+
+#main > * {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#main a {
+  text-decoration: underline;
+}
+
+.invis {
+  display: none;
+}
+
+.blog-title, .box {
+  background: $thing;
+  @include shadow;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.blog-post-title {
+  display: inline-block;
+}
+
+.blog-list a {
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+form.new-comment {
+  box-shadow: 0;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+
+  width: 80%;
+}
+
+.comment-info {
+  position: relative;
+}
+
+#main form {
+  background: $thing;
+}
+
+.comment-avatar {
+  margin-top: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  position: absolute;
+  left: -35px;
+}
+
+.comment-date {
+  color: #999;
+  font-size: 14px;
+}

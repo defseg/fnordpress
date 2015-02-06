@@ -23,7 +23,17 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
       if (!commentsByParent.hasOwnProperty(comment.escape('parent_comment_id'))) {
         commentsByParent[comment.escape('parent_comment_id')] = [];
       }
-      var commentHTML = $('<ul />').addClass(comment.escape('id')).html(comment.get('content'));
+      var commentHTML = $('<ul />').addClass(comment.escape('id'));
+
+      // add commenter info
+      var commenterInfo = $('<span />').addClass('comment-info');
+      commenterInfo.html("<img class='comment-avatar' src='http://www.gravatar.com/avatar/" + comment.escape('email') + "?d=identicon'>")
+      commenterInfo.append("<em class='comment-date'>" + comment.escape('created_at'))
+      commentHTML.html(commenterInfo);
+
+      // add comment
+      var commentContent = $('<p />').addClass('comment-content').html(comment.get('content'))
+      commentHTML.append(commentContent);
 
       // build comment box from commentForm
       var thisCommentForm = commentForm;

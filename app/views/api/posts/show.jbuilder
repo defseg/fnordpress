@@ -8,6 +8,6 @@ json.comments @comments do |comment|
   json.id comment.id
   json.parent_comment_id comment.parent_comment_id
   json.content comment.content
-  json.author comment.author.email
-  json.created_at comment.created_at
+  json.author comment.author.email_md5
+  json.created_at Time.at(comment.created_at).strftime('%c')
 end

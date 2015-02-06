@@ -1,15 +1,17 @@
-<h1>Your blogs:</h1>
-<% if (blogs && blogs.length > 0) { %>
-  <ul class="blog-list">
-    <% blogs.each(function (blog) { %>
-      <li>
-        <a href='<%= "#blogs/" + blog.escape('id') %>'>
-          <%= blog.escape('title') %></a>
-        <em class="blog-tagline"><%= blog.escape('tagline') %></em>
-      </li>
-    <% }) %>
-  </ul>
-<% } else { %>
-  None.
-<% } %>
-<a href="#/blogs/new">New blog</a>
+<div class="box">
+  <h1>Your blogs:</h1>
+  <% if (blogs && blogs.length > 0) { %>
+    <ul class="blog-list">
+      <% blogs.each(function (blog) { %>
+        <li>
+          <a href='<%= "#blogs/" + blog.escape('id') %>'>
+            <%= blog.escape('title') %></a>
+          <em class="blog-tagline"><%= blog.escape('tagline') %></em>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    None.
+  <% } %>
+  <a href="#/blogs/new">New blog</a>
+</div>

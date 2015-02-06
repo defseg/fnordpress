@@ -1,4 +1,6 @@
-html, body, header, footer, section, article, div, strong, img, h1, h2,
+@import 'colors';
+
+html, body, header, footer, section, article, div, strong, img, h1, h2, p,
 h3, time, header ul, header li, small, form, label, input, textarea, button, a {
   margin: 0;
   padding: 0;
@@ -11,6 +13,11 @@ h3, time, header ul, header li, small, form, label, input, textarea, button, a {
   vertical-align: inherit;
   color: inherit;
   background: transparent;
+}
+
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
 }
 
 h1, h2, h3 {
@@ -29,7 +36,7 @@ ul, li {
 
 body, html {
   font-family: sans-serif;
-  background: #2E547D;
+  background: $bg;
   height: 100%;
   font-size: 16px;
 }

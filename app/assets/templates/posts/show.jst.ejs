@@ -1,18 +1,25 @@
-<a href="#/blogs/<%= post.escape('blog_id') %>"><h1><%= post.escape('blog_title') %></h1></a>
-<em><%= post.escape('blog_tagline') %></em>
+<section class="blog-title">
+  <a href="#/blogs/<%= post.escape('blog_id') %>"><h1><%= post.escape('blog_title') %></h1></a>
+  <em><%= post.escape('blog-tagline') %></em>
+</section>
 
-<h2><%= post.escape('title') %></h2>
-<%= post.get('content') %>
-<br>
-Comments:
+<div class="box">
+  <h2><%= post.escape('title') %></h2>
+  <%= post.get('content') %>
+  <br>
+</div>
 
-<section class="comments"></section>
+<div class="box">
+  Comments:
 
-<form class="form new-comment">
-  <input type="hidden" name="comment[post_id]" value="<%= post.escape('id') %>">
-  <label>Leave a comment<br>
-    <textarea name="comment[content]" rows="16" cols="80"></textarea>
-  </label>
+  <section class="comments"></section>
 
-  <input type="submit" value="Post">
-</form>
+  <form class="form new-comment">
+    <input type="hidden" name="comment[post_id]" value="<%= post.escape('id') %>">
+    <label>Leave a comment<br>
+      <textarea name="comment[content]" rows="16" cols="80"></textarea>
+    </label>
+
+    <input type="submit" value="Post">
+  </form>
+</div>

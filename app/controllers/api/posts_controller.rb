@@ -23,7 +23,7 @@ class Api::PostsController < Api::ApiController
       @post.views += 1
       @post.save
     end
-    @comments = @post.comments
+    @comments = @post.comments.includes(:author)
     render :show
   end
 

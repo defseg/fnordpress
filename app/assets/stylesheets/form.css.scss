@@ -1,4 +1,5 @@
 @import 'shadow';
+@import 'colors';
 
 form {
   width: 50%;
@@ -10,7 +11,7 @@ form {
   padding: 20px 20px 50px 20px;
   border-radius: 5px;
   position: relative;
-  background: #eef;
+  background: $thing;
 }
 
 #main > div > form {
@@ -24,13 +25,13 @@ form {
 
 #main input[type="submit"], #main button {
   cursor: pointer;
-  background: #ccc;
+  background: $button;
   border-radius: 3px;
   padding: 10px 20px;
 }
 
 #main input[type="submit"]:hover, #main button:hover {
-  background: #999;
+  background: $button-hover;
 }
 
 input[type="submit"], #main button {
@@ -43,7 +44,7 @@ label {
 
 input[type="text"], select, input[type="password"], textarea, input[type="email"] {
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid $border;
   padding: 5px 10px;
   width: 95%;
   font-weight: normal;
