@@ -1,12 +1,13 @@
-WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
-  template: JST['interface/feed'],
+WordpressClone.Views.Recommendations = Backbone.CompositeView.extend({
 
-  initialize: function () {
+  template: JST['interface/recommendations'],
+
+  initialize: function (params) {
     this.listenTo(this.collection, 'sync', this.renderPosts);
   },
 
   events: {
-    'windowScroll #scrollListener': 'scroll'
+    // 'windowScroll #scrollListener': 'scroll'
   },
 
   render: function () {
@@ -21,14 +22,6 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
       var postView = new WordpressClone.Views.PostFeedShow({model: post});
       that.addSubview('#feed', postView);
     });
-    if (this.collection.length == 0) {
-      // TODO dekludge?
-      if (!(this.$el.has('.blog-post').length)) {
-        Backbone.history.navigate('#');
-      }
-    } else {
-      this.$('.no-follows').addClass('invis');
-    }
   },
 
   nextPage: function (event) {
@@ -38,7 +31,9 @@ WordpressClone.Views.PostFeed = Backbone.CompositeView.extend({
         page: (this.collection._page || 1) + 1
       }, success: function () {
         this.collection._page++;
-        this.$el.append('<div id="scrollListener"></div>');
+        if (this.collection.length > 0) {
+          this.$el.append('<div id="scrollListener"></div>');
+        }
       }.bind(this)
     });
   }

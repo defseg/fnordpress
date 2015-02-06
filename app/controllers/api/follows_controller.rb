@@ -1,17 +1,21 @@
 class Api::FollowsController < Api::ApiController
   def index
-    @page = params[:page] || 1
+    if !logged_in? || current_user.follows.empty?
+      render json: nil
+    else
+      @page = params[:page] || 1
 
-    @posts = Post.joins("INNER JOIN blogs ON posts.blog_id = blogs.id")
-                 .joins("INNER JOIN follows ON blogs.id = follows.blog_id")
-                 .joins("INNER JOIN users ON follows.user_id = users.id")
-                 .where(users: {id: current_user.id})
-                 .where("published_at <= :time_now", time_now: Time.now)
-                 .order(published_at: :desc)
-                 .includes(:comments)
-                 .page(@page)
+      @posts = Post.joins("INNER JOIN blogs ON posts.blog_id = blogs.id")
+                   .joins("INNER JOIN follows ON blogs.id = follows.blog_id")
+                   .joins("INNER JOIN users ON follows.user_id = users.id")
+                   .where(users: {id: current_user.id})
+                   .where("published_at <= :time_now", time_now: Time.now)
+                   .order(published_at: :desc)
+                   .includes(:comments)
+                   .page(@page)
 
-    render :index
+      render :index
+    end
   end
 
   def create

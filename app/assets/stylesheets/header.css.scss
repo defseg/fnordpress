@@ -13,6 +13,11 @@ header {
   position: relative;
   z-index: 1;
   @include shadow;
+  text-align: center;
+}
+
+header ul {
+  text-align: left;
 }
 
 header ul ul {
@@ -32,6 +37,13 @@ header a, header input, header .pseudo-anchor, header button {
   padding: 8px 20px;
   display: block;
   position: relative;
+}
+
+header strong {
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 20px;
 }
 
 header .pseudo-anchor {
@@ -80,7 +92,6 @@ header .user-header-links {
   float: left;
 }
 
-li:containing ul { content: ' »'; }
 
 
 

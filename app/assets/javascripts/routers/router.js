@@ -9,7 +9,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   // TODO: make these URLs look more Wordpress-like
   // TODO: the root route shouldn't be blogsIndex, but instead your following feed
   routes: {
-    '': 'mainPage',
+    '': 'recommendations',
+    'feed': 'feed',
     'me': 'blogsIndex',
     'blogs/new': 'blogNew',
     'users/:id': 'userShow',
@@ -22,7 +23,21 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
 
   // ====== MAIN  ======
 
-  mainPage: function () {
+  recommendations: function () {
+    var collection = new WordpressClone.Collections.Posts();
+    collection.url = '/api/recommendations';
+    var that = this;
+    collection.fetch({
+      data: {page: 1},
+      success: function () {
+        var view = new WordpressClone.Views.Recommendations({collection: collection});
+        that._swapView(view);
+        WordpressClone.headerView.trigger("blogUnview");
+      }
+    });
+  },
+
+  feed: function () {
     var collection = new WordpressClone.Collections.Posts();
     collection.url = "/api/follows";
     var that = this;

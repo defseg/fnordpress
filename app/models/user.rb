@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   has_many :followed_blogs, through: :follows, source: :blog
   has_many :authorizations, dependent: :destroy
 
+  def first_name
+    self.name.split.first || self.email.split("@").first
+  end
+
   def email_md5
     return @email_md5 if @email_md5
 

@@ -7,3 +7,19 @@
 
 <h2 class="editable" data-field="title"><%= blog.escape('title') %></h2>
 <em class="editable" data-field="tagline"><%= blog.escape('tagline') %></em>
+
+<table class="posts">
+  <% posts.each (function (post) { %>
+    <tr class="post" data-post-id="<%= post.escape('id') %>">
+      <th>
+        <a href="#/blogs/<%= blog.escape('id') %>/posts/<%= post.escape('id') %>/edit">
+          <%= post.escape('title') %>
+        </a>
+      </th>
+      <td>
+        <%= post.escape('views') %> views
+        <% console.log(post) %>
+      </td>
+    </tr>
+  <% }) %>
+</table>
