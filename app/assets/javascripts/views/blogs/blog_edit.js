@@ -7,6 +7,8 @@ WordpressClone.Views.BlogEdit = Backbone.View.extend({
   },
 
   events: {
+    'dblclick .editable': 'editField',
+    'blur .editing': 'saveField',
     'submit form': 'submit'
   },
 
@@ -15,6 +17,31 @@ WordpressClone.Views.BlogEdit = Backbone.View.extend({
     this.$el.html(content);
     WordpressClone.headerView.trigger("blogView", this.model);
     return this;
+  },
+
+  editField: function (event) {
+    event.preventDefault();
+    var $currentTarget = $(event.currentTarget);
+    var field = $currentTarget.data('field');
+    var $input = $("<input type='text'>").addClass('editing');
+    $input.data('field', field);
+    $input.val(this.model.escape(field));
+    $currentTarget.removeClass('editable');
+    $currentTarget.html($input);
+    $input.focus();
+  },
+
+  saveField: function (event) {
+    event.preventDefault();
+    var field = $(event.currentTarget).data('field');
+    var newValue = $(event.currentTarget).val();
+    var url = '/api/blogs/' + this.model.escape('id');
+
+    this.model.set(field, newValue);
+    this.model.save(null, {
+      url: url
+    });
+    this.render();
   },
 
   // TODO post pagination

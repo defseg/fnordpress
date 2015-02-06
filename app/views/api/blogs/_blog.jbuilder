@@ -1,3 +1,4 @@
+json.id @blog.id
 json.title @blog.title
 json.tagline @blog.tagline
 if logged_in?

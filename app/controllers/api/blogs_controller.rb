@@ -27,6 +27,15 @@ class Api::BlogsController < Api::ApiController
     render :edit
   end
 
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update_attributes(blog_params)
+      render json: @blog
+    else
+      render json: @blog.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   def index
     render json: current_user.blogs
   end
