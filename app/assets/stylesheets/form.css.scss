@@ -14,7 +14,7 @@ form {
   background: $thing;
 }
 
-#main > div > form {
+section > div > form {
   @include shadow;
 }
 
@@ -61,4 +61,14 @@ input[type="text"], select, input[type="password"], textarea, input[type="email"
 
 input > textarea {
   height: 100px;
+}
+
+
+
+form.new-comment, .box form {
+  box-shadow: 0 0 0 0 #000;
+  -webkit-box-shadow: 0 0 0 0 #000;
+  -moz-box-shadow: 0 0 0 0 #000;
+
+  width: 80%;
 }

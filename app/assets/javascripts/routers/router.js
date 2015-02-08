@@ -9,8 +9,8 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
   // TODO: make these URLs look more Wordpress-like
   // TODO: the root route shouldn't be blogsIndex, but instead your following feed
   routes: {
-    '': 'recommendations',
-    'feed': 'feed',
+    '': 'feed',
+    'recs': 'recommendations',
     'me': 'blogsIndex',
     'blogs/new': 'blogNew',
     'users/:id': 'userShow',
@@ -44,9 +44,13 @@ WordpressClone.Routers.Router = Backbone.Router.extend({
     collection.fetch({
       data: {page: 1},
       success: function () {
-        var view = new WordpressClone.Views.PostFeed({collection: collection});
-        that._swapView(view);
-        WordpressClone.headerView.trigger("blogUnview");
+        if (collection.length === 0) {
+          Backbone.history.navigate('recs', {trigger: true});
+        } else {
+          var view = new WordpressClone.Views.PostFeed({collection: collection});
+          that._swapView(view);
+          WordpressClone.headerView.trigger("blogUnview");
+        }
       }
     });
     // You can't edit your own posts from here. This is intentional.

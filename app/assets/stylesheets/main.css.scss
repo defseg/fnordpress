@@ -43,13 +43,7 @@ h1 {
   font-weight: bold;
 }
 
-form.new-comment {
-  box-shadow: 0;
-  -webkit-box-shadow: 0;
-  -moz-box-shadow: 0;
 
-  width: 80%;
-}
 
 .comment-info {
   position: relative;
@@ -71,4 +65,8 @@ form.new-comment {
 .comment-date {
   color: #999;
   font-size: 14px;
+}
+
+.box p {
+  margin-bottom: 10px;
 }
