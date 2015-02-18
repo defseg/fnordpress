@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.most_viewed(page = 1, per = 5)
-    Post.page(page).per(per).order("views DESC").includes(:blog)
+    Post.page(page).per(per).order(views: :desc).includes(:blog)
   end
 
   def self.most_commented(page = 1, per = 5)
