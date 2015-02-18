@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def new_guest
-    new_id = (User.last.id + 1).to_s
+    new_id = (User.last) ? (User.last.id + 1).to_s : 1
     user = User.new(password: "guestguest",
                     email: "guest" + new_id + "@example.com")
 
