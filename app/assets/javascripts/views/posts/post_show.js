@@ -27,7 +27,9 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
 
       // add commenter info
       var commenterInfo = $('<span />').addClass('comment-info');
-      commenterInfo.html("<img class='comment-avatar' src='http://www.gravatar.com/avatar/" + comment.escape('author') + "?d=identicon'>")
+      // if there's no email address, it's because the user just posted it
+      var commenterEmail = comment.escape('author') || $('header').data('email-hash')
+      commenterInfo.html("<img class='comment-avatar' src='http://www.gravatar.com/avatar/" + commenterEmail + "?d=identicon'>")      
       commenterInfo.append("<em class='comment-date'>" + comment.escape('created_at'))
       commentHTML.html(commenterInfo);
 
