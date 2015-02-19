@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   def new_guest
     new_id = (User.last) ? (User.last.id + 1).to_s : "1"
     user = User.new(password: "guestguest",
-                    email: "guest" + new_id + "@example.com")
+                    email: "guest" + new_id + "@example.com",
+                    name: "guest" + new_id)
 
     if user.save
       sign_in(user)
