@@ -27,7 +27,7 @@ WordpressClone.Views.PostShow = Backbone.View.extend({
 
       // add commenter info
       var commenterInfo = $('<span />').addClass('comment-info');
-      commenterInfo.html("<img class='comment-avatar' src='http://www.gravatar.com/avatar/" + comment.escape('email') + "?d=identicon'>")
+      commenterInfo.html("<img class='comment-avatar' src='http://www.gravatar.com/avatar/" + comment.escape('author') + "?d=identicon'>")
       commenterInfo.append("<em class='comment-date'>" + comment.escape('created_at'))
       commentHTML.html(commenterInfo);
 
