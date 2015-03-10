@@ -1,3 +1,11 @@
+A blogging platform written in Rails and Backbone. Strictly as an academic exercise, of course -- it hasn't been made crawlable yet.
+
+Allows indefinite comment nesting; builds comment structure from Backbone. Gravatar integration for avatars. Authentication with Devise, and Omniauth Facebook integration.
+
+In the future, multiple users will be able to edit blogs, with permissions implemented through enums.
+
+Backbone CompositeView extension allows use of multiple views on one page. This is used to build pages that display multiple posts, as well as the header. (The header is generated in Rails so user data can be sent up easily.)
+
 == MVP features
 * User can create account
 * User can CRUD blog
